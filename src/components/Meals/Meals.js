@@ -12,7 +12,7 @@ import "./MealsButton.css";
 import { useGlobalContext } from "../../store/context";
 import "./Meals.css";
 
-const Meals = () => {
+const Meals = ({ sendReports, toggloSendReportsHandler }) => {
   const [attendanceRecord, setAttendanceRecord] = useState({
     date: "1985-04-07",
     church_branch_id: "branch1",
@@ -48,11 +48,16 @@ const Meals = () => {
 
   return (
     <div className="meals">
-      {" "}
+      {
+        <button className="buttonreload" onClick={toggloSendReportsHandler}>
+          Back
+        </button>
+      }
       {/* Wrap Fragment with a parent div and apply the class */}
       {!submitted && (
         <AttendanceSetup onAttendanceChange={handleAttendanceChange} />
       )}
+
       {submitted && (
         <Fragment>
           <FilterBar onValueChange={handleValueFromChild} />
@@ -69,6 +74,7 @@ const Meals = () => {
               Realod Members
             </button>
           }
+
           <AvailableMeals
             attendanceRecord={attendanceRecord}
             catalog={valueFromChild}

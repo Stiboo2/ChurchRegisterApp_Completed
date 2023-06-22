@@ -8,13 +8,14 @@ import Notification from "./components/UI/Notification";
 import LoginPage from "./LoginPage/LoginPage";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./LoginPage/firebase-config";
+import ShowAllMembers from "./components/UI/ShowAllMembers";
 
 let isInitial = true;
 let isInitial2 = true;
 
 function App(props) {
   const [user, setUser] = useState({});
-
+  const [sendReports, setSendReports] = useState(false);
   const {
     loading,
     setCartAtReducer,
@@ -97,8 +98,6 @@ function App(props) {
       notifications("success", "Success!", "Sent cart data successfully!");
     };
 
-    console.log("knock knock ");
-
     // Rest of your code...
     // First condition
     if (isInitial) {
@@ -127,11 +126,16 @@ function App(props) {
   const showCartHandler = () => {
     setCartIsShown(true);
   };
-
+  const toggloSendReportsHandler = () => {
+    setSendReports(!sendReports);
+  };
   const hideCartHandler = () => {
     setCartIsShown(false);
   };
-
+  const memberS = Array.from(cart.entries()).map(([id, item]) => ({
+    id,
+    ...item,
+  }));
   return (
     <main>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
@@ -143,9 +147,20 @@ function App(props) {
           message={notification.message}
         />
       )}
-      {console.log(user)}
+      {user && !sendReports && (
+        <button className="button" onClick={toggloSendReportsHandler}>
+          Send Reports
+        </button>
+      )}
       {!user && <LoginPage />}
-      {user && <Meals />}
+      {user && sendReports && (
+        <Meals
+          sendReports={sendReports}
+          toggloSendReportsHandler={toggloSendReportsHandler}
+        />
+      )}
+      {user && !sendReports && <ShowAllMembers tableData={memberS} />}
+
       <Footer></Footer>
     </main>
   );

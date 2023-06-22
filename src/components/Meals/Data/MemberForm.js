@@ -4,19 +4,23 @@ import "./MemberForm.css";
 import classes from "./MemberForm.module.css";
 
 const isEmpty = (value) => value.trim() === "";
-const isFiveChars = (value) => value.trim() === "";
+const isTenChars = (value) => /^\d{10}$/.test(value.trim());
 const MemberForm = (props) => {
   const [formInputsValidity, setFormInputsValidity] = useState({
     name: true,
     street: true,
     city: true,
     postalCode: true,
+    cell: true,
+    idNumber: true,
   });
 
   const nameInputRef = useRef();
   const streetInputRef = useRef();
   const postalCodeInputRef = useRef();
   const cityInputRef = useRef();
+  const cellInputRef = useRef();
+  const idNumberInputRef = useRef();
 
   const confirmHandler = (event) => {
     event.preventDefault();
@@ -25,24 +29,32 @@ const MemberForm = (props) => {
     const enteredStreet = streetInputRef.current.value;
     const enteredPostalCode = postalCodeInputRef.current.value;
     const enteredCity = cityInputRef.current.value;
+    const enteredCell = cellInputRef.current.value;
+    const enteredIdNumber = idNumberInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredCityIsValid = !isEmpty(enteredStreet);
-    const enteredPostalCodeIsValid = !isEmpty(enteredPostalCode);
+    const enteredCityIsValid = !isEmpty(enteredCity);
+    const enteredPostalCodeIsValid = true; // Always valid, regardless of input
+    const enteredCellIsValid = isTenChars(enteredCell);
+    const enteredIdNumberIsValid = true; // Always valid, regardless of input
 
     setFormInputsValidity({
       name: enteredNameIsValid,
       street: enteredStreetIsValid,
       city: enteredCityIsValid,
       postalCode: enteredPostalCodeIsValid,
+      cell: enteredCellIsValid,
+      idNumber: enteredIdNumberIsValid,
     });
 
     const formIsValid =
       enteredNameIsValid &&
       enteredStreetIsValid &&
       enteredCityIsValid &&
-      enteredPostalCodeIsValid;
+      enteredPostalCodeIsValid &&
+      enteredCellIsValid &&
+      enteredIdNumberIsValid;
 
     if (!formIsValid) {
       return;
@@ -53,6 +65,8 @@ const MemberForm = (props) => {
       title: enteredStreet,
       image: enteredCity,
       branch: enteredPostalCode,
+      cell: enteredCell,
+      idNumber: enteredIdNumber,
     });
   };
 
@@ -68,17 +82,35 @@ const MemberForm = (props) => {
   const cityControlClasses = `${classes.control} ${
     formInputsValidity.city ? "" : classes.invalid
   }`;
+  const cellControlClasses = `${classes.control} ${
+    formInputsValidity.cell ? "" : classes.invalid
+  }`;
+  const idNumberControlClasses = `${classes.control} ${
+    formInputsValidity.idNumber ? "" : classes.invalid
+  }`;
+
   const cancelHandler = () => {
-    {
-      props.onCancelMeal();
-    }
+    props.onCancelMeal();
   };
+
   return (
     <form className={classes.forma} onSubmit={confirmHandler}>
       <div className={nameControlClasses}>
         <label htmlFor="name">Name and Surname</label>
         <input type="text" id="name" ref={nameInputRef} />
         {!formInputsValidity.name && <p>Please enter a valid name!</p>}
+      </div>
+      <div className={cellControlClasses}>
+        <label htmlFor="cell">Cell Number</label>
+        <input type="text" id="cell" ref={cellInputRef} />
+        {!formInputsValidity.cell && (
+          <p>Please enter a valid Cell Phone Number!</p>
+        )}
+      </div>
+      <div className={idNumberControlClasses}>
+        <label htmlFor="idNumber">ID Number</label>
+        <input type="text" id="idNumber" ref={idNumberInputRef} />
+        {!formInputsValidity.idNumber && <p>Please enter a valid ID number!</p>}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor="city">Image</label>

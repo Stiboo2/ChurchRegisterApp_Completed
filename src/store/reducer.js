@@ -63,6 +63,8 @@ const reducer = (state, action) => {
       surname: action.payload.newMember.name,
       img: action.payload.newMember.image,
       branch: action.payload.newMember.branch,
+      cell: action.payload.newMember.cell,
+      idNumber: action.payload.newMember.idNumber,
       amount: 0,
       status: "null",
       attendance: ["dummy"],
