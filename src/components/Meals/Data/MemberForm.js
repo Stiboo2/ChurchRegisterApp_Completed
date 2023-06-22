@@ -33,8 +33,8 @@ const MemberForm = (props) => {
     const enteredIdNumber = idNumberInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
-    const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredCityIsValid = !isEmpty(enteredCity);
+    const enteredStreetIsValid = true; // Always valid, regardless of input
+    const enteredCityIsValid = true; // Always valid, regardless of input
     const enteredPostalCodeIsValid = true; // Always valid, regardless of input
     const enteredCellIsValid = isTenChars(enteredCell);
     const enteredIdNumberIsValid = true; // Always valid, regardless of input
