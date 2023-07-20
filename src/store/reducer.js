@@ -88,7 +88,7 @@ const reducer = (state, action) => {
 
     const newItem = {
       ...item,
-      status: null,
+      status: "null",
       attendance: item.attendance.filter((attender) => attender.date !== date), // Update attendance record
     };
     newCart.set(itemId, newItem);

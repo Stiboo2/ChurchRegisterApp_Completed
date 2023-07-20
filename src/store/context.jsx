@@ -39,7 +39,7 @@ export const AppProvider = ({ children }) => {
     state.branch_Date,
     state.branchs
   );
-  console.log(state);
+  console.log(state.cart);
   const login = state.logging;
   //const { totalAmount, totalCost } = getTotals(state.branchs);
   const setCartAtReducer = (newCart) => {
