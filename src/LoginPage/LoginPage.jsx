@@ -25,8 +25,36 @@ function LoginPage() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const LoadUserPassword = (event) => {
+    {
+      if (buttonText === "Sign Up") {
+        setRegisterEmail(event.target.value);
+        console.log("registerEmail_____", registerEmail);
+      } else if (buttonText === "LOGIN") {
+        setLoginEmail(event.target.value);
+        console.log("loginEmail____", loginEmail);
+      }
+    }
+  };
 
+  const checkIfEmpty = () => {
+    console.log("checkIfEmpty");
+
+    const isRegisterEmpty = !registerEmail || !registerPassword;
+    const isLoginEmpty = !loginEmail || !loginPassword;
+
+    if (isRegisterEmpty && isLoginEmpty) {
+      console.log("Both registration and login fields are empty.");
+    } else if (isRegisterEmpty) {
+      console.log("Registration fields are empty.");
+    } else if (isLoginEmpty) {
+      console.log("Login fields are empty.");
+    } else {
+      console.log("All fields are filled.");
+    }
+  };
   const register = async () => {
+    checkIfEmpty();
     console.log("registerEmail", registerEmail);
 
     try {
@@ -42,6 +70,7 @@ function LoginPage() {
   };
 
   const login = async () => {
+    checkIfEmpty();
     try {
       const user = await signInWithEmailAndPassword(
         auth,
@@ -71,15 +100,7 @@ function LoginPage() {
         <Input
           type="text"
           placeholder="Email"
-          onBlur={(event) => {
-            if (buttonText === "Sign Up") {
-              setRegisterEmail(event.target.value);
-              console.log("registerEmail_____", registerEmail);
-            } else if (buttonText === "LOGIN") {
-              setLoginEmail(event.target.value);
-              console.log("loginEmail____", loginEmail);
-            }
-          }}
+          onBlur={(event) => LoadUserPassword(event)}
         />
         <Input
           type="password"
