@@ -9,10 +9,13 @@ const Checkout = (props) => {
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
       <div className={classes.control}>
-        <label htmlFor="name">Your Name</label>
+        <label htmlFor="name">
+          Are you sure you want to save the Above infomation? type "yes"
+        </label>
         <input type="text" id="name" />
       </div>
       <div className={classes.actions}>
+        s
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>

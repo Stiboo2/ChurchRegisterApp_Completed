@@ -78,7 +78,7 @@ const Cart = (props) => {
     <React.Fragment>
       {cartItems}
       <div className={classes.total}>
-        <span>Total Amount</span>
+        <span>Total Members</span>
         <span>{totalAmount}</span>
       </div>
       {isCheckout && (

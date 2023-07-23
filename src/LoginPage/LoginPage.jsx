@@ -65,7 +65,13 @@ function LoginPage() {
       );
       console.log(user);
     } catch (error) {
-      console.log(error.message);
+      console.log(":" + error.message + ":");
+      if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+        console.log("email__________________use");
+        setLoginPassword(registerPassword);
+        setLoginEmail(registerEmail);
+        login();
+      }
     }
   };
 
