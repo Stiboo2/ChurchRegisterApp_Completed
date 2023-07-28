@@ -1,15 +1,24 @@
-import { Fragment, useEffect, useState } from "react";
-import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
-import Cart from "./components/Cart/Cart";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "./store/context";
-import Footer from "./components/Footer/Footer";
-import Notification from "./components/UI/Notification";
-import LoginPage from "./LoginPage/LoginPage";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./LoginPage/firebase-config";
-import ShowAllMembers from "./components/UI/ShowAllMembers";
+import Home from "./components/Home";
+import RootLayout from "./components/Root";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import UnauthorizedPage from "./components/NotAuthorised/NotAuthorised";
+import Error from "./components/Error";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <Error />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "unauthorizedpage", element: <UnauthorizedPage /> },
+    ],
+  },
+]);
 let isInitial = true;
 let isInitial2 = true;
 
@@ -17,14 +26,12 @@ function App(props) {
   const [user, setUser] = useState({});
   const [sendReports, setSendReports] = useState(false);
   const {
-    loading,
     setCartAtReducer,
     cart,
     notifications,
     notification,
     isSubmitting,
     setIsSubmitting,
-    date,
   } = useGlobalContext();
   const [cartIsShown, setCartIsShown] = useState(false);
 
@@ -123,45 +130,13 @@ function App(props) {
     });
   }, [isSubmitting]);
 
-  const showCartHandler = () => {
-    setCartIsShown(true);
-  };
-  const toggloSendReportsHandler = () => {
-    setSendReports(!sendReports);
-  };
-  const hideCartHandler = () => {
-    setCartIsShown(false);
-  };
   const memberS = Array.from(cart.entries()).map(([id, item]) => ({
     id,
     ...item,
   }));
   return (
     <main>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} date={date} />
-      {notification && (
-        <Notification
-          status={notification.status}
-          title={notification.title}
-          message={notification.message}
-        />
-      )}
-      {user && !sendReports && (
-        <button className="button" onClick={toggloSendReportsHandler}>
-          Send Reports
-        </button>
-      )}
-      {!user && <LoginPage />}
-      {user && sendReports && (
-        <Meals
-          sendReports={sendReports}
-          toggloSendReportsHandler={toggloSendReportsHandler}
-        />
-      )}
-      {user && !sendReports && <ShowAllMembers tableData={memberS} />}
-
-      <Footer></Footer>
+      <RouterProvider router={router} />;
     </main>
   );
 }

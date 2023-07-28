@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styled from "styled-components";
-import capeImage from "../../assets/meals.jpg";
+import capeImage from "../../assets/homePic.jpg";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 import CartButtons from "./CartButtons";
