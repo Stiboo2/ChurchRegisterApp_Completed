@@ -5,12 +5,39 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: block;
 }
 .homeContainer {
-  display: grid;
-  height: 100;
+  display: block;
+  /* height: 100; */
+  position: relative;
+}
+.textContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 10px;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12rem;
+  gap: 1rem;
+  text-transform: uppercase;
 }
 .text {
-  width: 30%;
-  height: 30%;
+  font-size: 6rem;
+  background-color: transparent;
+  border: 3px solid #fffffc;
+  color: rgb(12, 12, 12);
+  width: fit-content;
+  border-radius: 40px;
+  font-weight: bold;
+  padding: 0rem 0rem;
+}
+.textSite {
+  color: var(--clr-primary-1);
+  background-color: var(--clr-primary-7);
+  padding: 0rem 1rem;
 }

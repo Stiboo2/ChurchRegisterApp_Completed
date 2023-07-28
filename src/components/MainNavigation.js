@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import classes from "./MainNavigation.module.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/logo.png";
+import LoginPage from "../LoginPage/LoginPage";
 
 const MainNavigation = () => {
   const [click, setClick] = useState(false);
@@ -91,6 +92,9 @@ const MainNavigation = () => {
         </ul>
       </nav>
 
+      <button className={classes.loga} onClick="{buttonReloadHandler}">
+        login
+      </button>
       <div className={classes.hamburger} onClick={handleClick}>
         {click ? (
           <FaTimes size={30} style={{ color: "#f8f8f8" }} />

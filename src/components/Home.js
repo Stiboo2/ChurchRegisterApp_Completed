@@ -1,16 +1,24 @@
 import React from "react";
 import classes from "./Home.module.css";
-
+import LoginPage from "../LoginPage/LoginPage";
 const Home = () => {
   return (
     <>
       <div className={classes.homeContainer}>
-        <div className={classes.text}>Ikhaya le ZiNyanga</div>
+        <div className={classes.textContainer}>
+          <h4 className={classes.textSite}>Welcome to </h4>
+          <div className={classes.text}>Cape Town </div>
+          <h4 className={classes.textSite}>Website </h4>
+        </div>
+
         <img
           className={classes.fullscreenImage}
-          src="https://res.cloudinary.com/dkayrcyeb/image/upload/v1684784822/20220710_082245_r0i2aw.jpg"
+          src="https://res.cloudinary.com/dkayrcyeb/image/upload/v1690564867/20220710_082245_r0i2aw.jpg"
           alt="Home Image"
         />
+      </div>
+      <div>
+        <LoginPage />
       </div>
     </>
   );

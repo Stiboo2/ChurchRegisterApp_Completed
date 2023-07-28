@@ -145,12 +145,12 @@ function LoginPage() {
 }
 
 const MainContainer = styled.div`
-  margin-top: -12rem;
+  margin-top: -40rem;
   margin-left: 30rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 30 remn;
   width: 30vw;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -179,20 +179,34 @@ const MainContainer = styled.div`
   }
   @media only screen and (min-width: 411px) {
     width: 80vw;
-    height: 90vh;
+    height: 60vh;
+    margin-top: -11rem;
+    margin-left: 2rem;
   }
 
   @media only screen and (min-width: 768px) {
     width: 80vw;
-    height: 80vh;
+    height: 40vh;
+    margin-top: -20rem;
+    margin-left: 6rem;
   }
   @media only screen and (min-width: 1024px) {
     width: 70vw;
-    height: 50vh;
+    height: 60vh;
+    margin-top: -40rem;
+    margin-left: 30rem;
   }
   @media only screen and (min-width: 1280px) {
     width: 30vw;
     height: 80vh;
+    margin-top: -39rem;
+    margin-left: 30rem;
+  }
+  @media only screen and (min-width: 1400px) {
+    width: 30vw;
+    height: 55vh;
+    margin-top: -40rem;
+    margin-left: 30rem;
   }
 `;
 const WelcomeText = styled.h2`
