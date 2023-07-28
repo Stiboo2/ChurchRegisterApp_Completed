@@ -202,6 +202,12 @@ const MainContainer = styled.div`
     margin-top: -39rem;
     margin-left: 30rem;
   }
+  @media only screen and (min-width: 1366px) {
+    width: 30vw;
+    height: 85vh;
+    margin-top: -38rem;
+    margin-left: 30rem;
+  }
   @media only screen and (min-width: 1400px) {
     width: 30vw;
     height: 55vh;

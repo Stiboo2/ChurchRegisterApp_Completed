@@ -19,6 +19,7 @@ import {
   BRANCH_NAME,
   RELOAD_MEMBERS,
   ADD_MEMBER,
+  WANT_TO_LOG_IN,
 } from "./actions";
 import { getTotals } from "../components/Utils/utils";
 
@@ -31,6 +32,7 @@ const initialState = {
   branchs: new Map(capetownBranch.map((branch) => [branch._id, branch])),
   branch_Date: {},
   notification: null,
+  LogIn: false,
 };
 
 export const AppProvider = ({ children }) => {
@@ -89,7 +91,12 @@ export const AppProvider = ({ children }) => {
       payload: { status, title, message },
     });
   };
-
+  const setWantToLogIn = (status) => {
+    dispatch({
+      type: WANT_TO_LOG_IN,
+      payload: { status },
+    });
+  };
   return (
     <AppContext.Provider
       value={{
@@ -113,6 +120,7 @@ export const AppProvider = ({ children }) => {
         seach_branch_name,
         reloadMembers,
         addNewMember,
+        setWantToLogIn,
       }}
     >
       {children}

@@ -15,11 +15,15 @@ import {
   BRANCH_NAME,
   RELOAD_MEMBERS,
   ADD_MEMBER,
+  WANT_TO_LOG_IN,
 } from "./actions";
 
 const reducer = (state, action) => {
   if (action.type === SUBMITING) {
     return { ...state, isSubmitting: action.payload.status };
+  }
+  if (action.type === WANT_TO_LOG_IN) {
+    return { ...state, LogIn: action.payload.status };
   }
   if (action.type === CLEAR_CART) {
     return { ...state, cart: new Map() };

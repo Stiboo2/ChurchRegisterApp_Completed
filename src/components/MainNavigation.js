@@ -4,12 +4,21 @@ import React, { useState } from "react";
 import classes from "./MainNavigation.module.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/logo.png";
-import LoginPage from "../LoginPage/LoginPage";
+import { useGlobalContext } from "../store/context";
 
 const MainNavigation = () => {
+  const { setWantToLogIn, LogIn } = useGlobalContext();
+  const [logBtnClick, setLogBtnClick] = useState(LogIn);
   const [click, setClick] = useState(false);
 
-  const handleClick = () => setClick(!click);
+  const handleClick = () => setClick((prevState) => !prevState);
+  const buttonWantToLogIn = () => {
+    // Toggle the logBtnClick state using the previous state value.
+    setLogBtnClick((prevState) => !prevState);
+    // Set the wantToLogIn context value using the updated logBtnClick state value.
+    setWantToLogIn(!logBtnClick);
+  };
+
   return (
     <div className={classes.navbar}>
       <div className={classes.logo}>
@@ -92,7 +101,7 @@ const MainNavigation = () => {
         </ul>
       </nav>
 
-      <button className={classes.loga} onClick="{buttonReloadHandler}">
+      <button className={classes.loga} onClick={buttonWantToLogIn}>
         login
       </button>
       <div className={classes.hamburger} onClick={handleClick}>

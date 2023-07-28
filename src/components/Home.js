@@ -1,7 +1,9 @@
 import React from "react";
 import classes from "./Home.module.css";
 import LoginPage from "../LoginPage/LoginPage";
+import { useGlobalContext } from "../store/context";
 const Home = () => {
+  const { LogIn } = useGlobalContext();
   return (
     <>
       <div className={classes.homeContainer}>
@@ -17,9 +19,7 @@ const Home = () => {
           alt="Home Image"
         />
       </div>
-      <div>
-        <LoginPage />
-      </div>
+      <div>{LogIn && <LoginPage />}</div>
     </>
   );
 };
