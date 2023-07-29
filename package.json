@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@svgr/core": "^8.0.0",
+    "@svgr/webpack": "^8.0.1"
   }
 }

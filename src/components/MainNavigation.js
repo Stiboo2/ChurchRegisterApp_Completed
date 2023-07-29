@@ -5,8 +5,10 @@ import classes from "./MainNavigation.module.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/logo.png";
 import { useGlobalContext } from "../store/context";
+import { useUserContext } from "../store/user_context";
 
 const MainNavigation = () => {
+  const { myUser } = useUserContext();
   const { setWantToLogIn, LogIn } = useGlobalContext();
   const [logBtnClick, setLogBtnClick] = useState(LogIn);
   const [click, setClick] = useState(false);
@@ -20,6 +22,10 @@ const MainNavigation = () => {
   useEffect(() => {
     setLogBtnClick(LogIn);
   }, [LogIn]);
+
+  /*   if (myUser) {
+    setWantToLogIn(false);
+  } */
 
   return (
     <div className={classes.navbar}>
@@ -97,14 +103,24 @@ const MainNavigation = () => {
                 isActive ? classes.active : undefined
               }
             >
-              Church Database
+              CHURCH DATABASE
+            </NavLink>
+          </li>
+          <li className={classes.navItem}>
+            <NavLink
+              to="sendreport"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              SEND REPORT
             </NavLink>
           </li>
         </ul>
       </nav>
 
       <button className={classes.loga} onClick={buttonWantToLogIn}>
-        login
+        {LogIn ? "Loging-in" : "Login"}
       </button>
       <div className={classes.hamburger} onClick={handleClick}>
         {click ? (

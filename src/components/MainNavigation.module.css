@@ -15,10 +15,6 @@ a {
   text-decoration: none;
 }
 
-.navbar img {
-  width: 80px;
-}
-
 .navMenu {
   display: flex;
   gap: 0.01 pix; /* Corrected gap value without space */
@@ -51,11 +47,16 @@ a {
 .loga:hover {
   background-color: #0056b3;
 }
+.logo {
+  width: 0px;
+  /* height: auto;  Automatically adjust the height while maintaining aspect ratio */
+}
+
 .loga {
   font: inherit;
   cursor: pointer;
 
-  background-color: var(--clr-primary-9);
+  background-color: var(--clr-green-dark);
   border: 3px solid #e5f0e8;
   color: rgb(241, 235, 235);
   width: fit-content;
@@ -66,9 +67,9 @@ a {
 
 .loga:hover,
 .loga:active {
-  background-color: #ff0000;
+  background-color: #f0ff1a;
   border-color: #080cd8;
-  color: #cbda45;
+  color: #0602f7;
 }
 
 @media screen and (max-width: 940px) {
