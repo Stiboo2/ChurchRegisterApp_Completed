@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./MainNavigation.module.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/logo.png";
@@ -13,11 +13,13 @@ const MainNavigation = () => {
 
   const handleClick = () => setClick((prevState) => !prevState);
   const buttonWantToLogIn = () => {
-    // Toggle the logBtnClick state using the previous state value.
     setLogBtnClick((prevState) => !prevState);
-    // Set the wantToLogIn context value using the updated logBtnClick state value.
     setWantToLogIn(!logBtnClick);
   };
+
+  useEffect(() => {
+    setLogBtnClick(LogIn);
+  }, [LogIn]);
 
   return (
     <div className={classes.navbar}>
