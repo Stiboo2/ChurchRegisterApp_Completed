@@ -3,14 +3,18 @@ import styled from "styled-components";
 import Button from "./components/Button";
 import Icon from "./components/Icon";
 import Input from "./components/Input";
+import { FaTimes } from "react-icons/fa";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "./firebase-config";
+import classes from "./LoginPage.module.css";
+import { useGlobalContext } from "../store/context";
 
 function LoginPage() {
+  const { setWantToLogIn } = useGlobalContext();
   const FacebookBackground =
     "linear-gradient(to right, #0546A0 0%, #0546A0 40%, #663FB6 100%)";
   const InstagramBackground =
@@ -99,8 +103,15 @@ function LoginPage() {
       setButtonText("Sign Up");
     }
   };
+  const handleCloseLogIn = () => {
+    console.log("consthandleCloseLogIn");
+    setWantToLogIn(false);
+  };
   return (
     <MainContainer>
+      <div className={classes.closeLogIn} onClick={handleCloseLogIn}>
+        <FaTimes className={classes.closeTimes} />
+      </div>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
         <Input
