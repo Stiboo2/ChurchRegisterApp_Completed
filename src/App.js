@@ -7,6 +7,7 @@ import RootLayout from "./components/Root";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UnauthorizedPage from "./components/NotAuthorised/NotAuthorised";
 import Error from "./components/Error";
+import Meals from "./components/Meals/Meals";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "unauthorizedpage", element: <UnauthorizedPage /> },
+      { path: "sendreport", element: <Meals /> },
     ],
   },
 ]);

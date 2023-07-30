@@ -32,7 +32,7 @@ const MainNavigation = () => {
   return (
     <div className={classes.navbar}>
       <div className={classes.logo}>
-        <img src={Logo} alt="logo" />
+        <img className={classes.logo} src={Logo} alt="logo" />
       </div>
 
       <nav>
