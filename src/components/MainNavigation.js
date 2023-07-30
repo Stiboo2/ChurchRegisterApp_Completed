@@ -11,19 +11,10 @@ import LogInAndOut from "./Layout/LogInAndOut";
 
 const MainNavigation = () => {
   const { myUser } = useUserContext();
-  const { setWantToLogIn, LogIn } = useGlobalContext();
-  const [logBtnClick, setLogBtnClick] = useState(LogIn);
+  const { LogIn } = useGlobalContext();
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick((prevState) => !prevState);
-  const buttonWantToLogIn = () => {
-    setLogBtnClick((prevState) => !prevState);
-    setWantToLogIn(!logBtnClick);
-  };
-
-  useEffect(() => {
-    setLogBtnClick(LogIn);
-  }, [LogIn]);
 
   /*   if (myUser) {
     setWantToLogIn(false);
@@ -36,7 +27,11 @@ const MainNavigation = () => {
       </div>
 
       <nav>
-        <ul className={classes.navMenu}>
+        <ul
+          className={
+            click ? `${classes.navMenu} ${classes.active}` : classes.navMenu
+          }
+        >
           <li className={classes.navItem}>
             <NavLink
               to="/"
