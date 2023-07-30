@@ -121,9 +121,9 @@ const MainNavigation = () => {
       </button> */}
       <div className={classes.hamburger} onClick={handleClick}>
         {click ? (
-          <FaTimes size={30} style={{ color: "#f8f8f8" }} />
+          <FaTimes className={classes.faTimes} />
         ) : (
-          <FaBars size={30} style={{ color: "#f8f8f8" }} />
+          <FaBars className={classes.faBars} />
         )}
       </div>
     </div>

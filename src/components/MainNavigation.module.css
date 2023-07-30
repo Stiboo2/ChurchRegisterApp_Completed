@@ -86,10 +86,20 @@ a {
   color: var(--clr-primary-9);
   text-decoration: underline;
 }
+.faTimes,
+.faBars {
+  font-size: 30px;
+  color: #f8f8f8;
+}
+.faBars:hover {
+  color: var(--clr-primary-9); /* Set the desired hover color */
+}
 .hamburger {
   display: none;
 }
-
+.faTimes:hover {
+  color: var(--clr-red-dark); /* Set the desired hover color */
+}
 @media screen and (max-width: 940px) {
   .navMenu {
     position: fixed;
@@ -119,6 +129,7 @@ a {
   .navItem:hover {
     background-color: yellow;
   }
+
   .hamburger {
     display: flex;
   }
