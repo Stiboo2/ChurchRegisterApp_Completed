@@ -6,6 +6,8 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../assets/logo.png";
 import { useGlobalContext } from "../store/context";
 import { useUserContext } from "../store/user_context";
+import CartButtons from "./Layout/CartButtons";
+import LogInAndOut from "./Layout/LogInAndOut";
 
 const MainNavigation = () => {
   const { myUser } = useUserContext();
@@ -118,10 +120,10 @@ const MainNavigation = () => {
           </li>
         </ul>
       </nav>
-
-      <button className={classes.loga} onClick={buttonWantToLogIn}>
+      <LogInAndOut></LogInAndOut>
+      {/*    <button className={classes.loga} onClick={buttonWantToLogIn}>
         {LogIn ? "Loging-in" : "Login"}
-      </button>
+      </button> */}
       <div className={classes.hamburger} onClick={handleClick}>
         {click ? (
           <FaTimes size={30} style={{ color: "#f8f8f8" }} />

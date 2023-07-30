@@ -34,10 +34,10 @@ const Header = (props) => {
         <div>
           <h2>{myUser && uBaba}</h2>
         </div>
-        <CartButtons></CartButtons>
+        {/*     <CartButtons></CartButtons> */}
       </header>
       <div>
-        <img src={capeImage} alt="A table full of delicious food" />
+        <img src={capeImage} alt="cape town Image" />
       </div>
     </Fragment>
   );

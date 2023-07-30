@@ -67,6 +67,7 @@ function LoginPage() {
         registerEmail,
         registerPassword
       );
+      setWantToLogIn(false);
       console.log(user);
     } catch (error) {
       console.log(":" + error.message + ":");
@@ -88,6 +89,7 @@ function LoginPage() {
         loginPassword
       );
       console.log(user);
+      setWantToLogIn(false);
     } catch (error) {
       console.log(error.message);
     }
