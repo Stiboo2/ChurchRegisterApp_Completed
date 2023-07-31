@@ -11,6 +11,7 @@ import MemberForm from "./Data/MemberForm";
 import "./MealsButton.css";
 import { useGlobalContext } from "../../store/context";
 import "./Meals.css";
+import Header from "../Layout/Header";
 
 const Meals = () => {
   const [attendanceRecord, setAttendanceRecord] = useState({
@@ -47,35 +48,40 @@ const Meals = () => {
   };
 
   return (
-    <div className="meals">
-      {/* Wrap Fragment with a parent div and apply the class */}
-      {!submitted && (
-        <AttendanceSetup onAttendanceChange={handleAttendanceChange} />
-      )}
+    <div>
+      <div>
+        <Header date={attendanceRecord.date} submitted={submitted} />
+      </div>
+      <div className="meals">
+        {/* Wrap Fragment with a parent div and apply the class */}
+        {!submitted && (
+          <AttendanceSetup onAttendanceChange={handleAttendanceChange} />
+        )}
 
-      {submitted && (
-        <Fragment>
-          <FilterBar onValueChange={handleValueFromChild} />
-          {addMemberButton && (
-            <MemberForm onConfirm={SaveMember} onCancelMeal={MemberHandler} />
-          )}
-          {!addMemberButton && (
-            <button className="button" onClick={MemberHandler}>
-              Add New Member
-            </button>
-          )}
-          {
-            <button className="buttonreload" onClick={buttonReloadHandler}>
-              Realod Members
-            </button>
-          }
+        {submitted && (
+          <Fragment>
+            <FilterBar onValueChange={handleValueFromChild} />
+            {addMemberButton && (
+              <MemberForm onConfirm={SaveMember} onCancelMeal={MemberHandler} />
+            )}
+            {!addMemberButton && (
+              <button className="button" onClick={MemberHandler}>
+                Add New Member
+              </button>
+            )}
+            {
+              <button className="buttonreload" onClick={buttonReloadHandler}>
+                Realod Members
+              </button>
+            }
 
-          <AvailableMeals
-            attendanceRecord={attendanceRecord}
-            catalog={valueFromChild}
-          />
-        </Fragment>
-      )}
+            <AvailableMeals
+              attendanceRecord={attendanceRecord}
+              catalog={valueFromChild}
+            />
+          </Fragment>
+        )}
+      </div>
     </div>
   );
 };

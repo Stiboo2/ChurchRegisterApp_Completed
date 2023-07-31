@@ -30,14 +30,19 @@ const Header = (props) => {
         <h1>Cape Town Register</h1>
         <HeaderCartButton onClick={props.onShowCart} />
 
-        {myUser && props.date && <ExpenseDate2 date={expenseDate} />}
+        {myUser && props.date && props.submitted && (
+          <ExpenseDate2 date={expenseDate} />
+        )}
         <div>
           <h2>{myUser && uBaba}</h2>
         </div>
-        {/*     <CartButtons></CartButtons> */}
       </header>
       <div>
-        <img src={capeImage} alt="cape town Image" />
+        <img
+          className={classes.imageSR}
+          src={capeImage}
+          alt="cape town Image"
+        />
       </div>
     </Fragment>
   );

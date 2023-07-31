@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../store/context";
 import classes from "./HeaderCardButton.module.css";
 import CartIcon from "../Cart/CartIcon";
 import { FaChurch } from "react-icons/fa";
-import "./CartIcon.css";
+
 const HeaderCartButton = (props) => {
   const [btnIsHighlighted, setBtnIsHightlighted] = useState(false);
 
@@ -27,12 +27,12 @@ const HeaderCartButton = (props) => {
   }, []);
 
   return (
-    <button className={btnClasses} onClick={props.onClick}>
-      <span className={classes.text}>{branchName}</span>
+    <button className={classes.btnSpans} onClick={props.onClick}>
+      <span className={classes.branchName}>{branchName}</span>
       <span className={classes.icon}>
-        <FaChurch className="cart-icon" />
+        <FaChurch className={classes.cartIcon} />
       </span>
-      <span className={classes.badge}>{totalAmount}</span>
+      <span className={classes.totalAmount}>{totalAmount}</span>
     </button>
   );
 };
