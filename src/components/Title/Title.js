@@ -1,12 +1,12 @@
 import React from "react";
-import "./Title.css";
-//import "../Categories/Socials.css";
+import classes from "./Title.module.css";
+
 const Title = ({ text }) => {
   return (
-    <div className="title">
-      <h2>{text || "Default Title"}</h2>
-      <div className="title-underline"></div>
-      <h2 className="title_h2">{"Branch"}</h2>
+    <div className={classes.title}>
+      <h2 className={classes.title_h2}>{text || "Default Title"}</h2>
+      <div className={classes["title-underline"]}></div>
+      <h2 className={classes.branch_h2}>{"Branch"}</h2>
     </div>
   );
 };

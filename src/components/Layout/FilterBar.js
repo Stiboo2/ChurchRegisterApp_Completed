@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Title from "../Title/Title";
 import { useGlobalContext } from "../../store/context";
 import Catalog from "./Catalog";
-import "./Filter.css";
-import classes from "../Meals/MealsSummary.module.css";
+
 const FilterBar = ({ onValueChange }) => {
   const [branchCatelog, setBranchCatelog] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,7 +56,6 @@ const FilterBar = ({ onValueChange }) => {
   return (
     <>
       <Catalog
-        className={classes.summary}
         categories={categories}
         filterItems={filterbranchItemss}
       ></Catalog>

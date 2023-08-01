@@ -12,6 +12,7 @@ import "./MealsButton.css";
 import { useGlobalContext } from "../../store/context";
 import "./Meals.css";
 import Header from "../Layout/Header";
+import classes from "./page.module.css";
 
 const Meals = () => {
   const [attendanceRecord, setAttendanceRecord] = useState({
@@ -65,20 +66,23 @@ const Meals = () => {
               <MemberForm onConfirm={SaveMember} onCancelMeal={MemberHandler} />
             )}
             {!addMemberButton && (
-              <button className="button" onClick={MemberHandler}>
+              <button className={classes.buttonAdd} onClick={MemberHandler}>
                 Add New Member
               </button>
             )}
-            {
-              <button className="buttonreload" onClick={buttonReloadHandler}>
-                Realod Members
-              </button>
-            }
 
             <AvailableMeals
               attendanceRecord={attendanceRecord}
               catalog={valueFromChild}
             />
+            {
+              <button
+                className={classes.buttonreload}
+                onClick={buttonReloadHandler}
+              >
+                Realod Members
+              </button>
+            }
           </Fragment>
         )}
       </div>

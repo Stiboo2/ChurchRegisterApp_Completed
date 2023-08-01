@@ -1,12 +1,12 @@
-import "./Filter.css";
+import classes from "./Catalog.module.css";
 const Catalog = ({ categories, filterItems }) => {
   return (
-    <div className="btn-container_sc">
+    <div className={classes.btnContainerSc}>
       {categories.map((category, index) => {
         return (
           <button
             type="button"
-            className="filter-btn"
+            className={classes.filterBtn}
             key={index}
             onClick={() => filterItems(category)}
           >

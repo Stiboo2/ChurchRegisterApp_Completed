@@ -14,7 +14,7 @@ const Header = (props) => {
   let year = null;
   let month = null; // Month is zero-based (0-11)
   let day = null;
-  let expenseDate = null;
+  let AttendedDate = null;
 
   if (props.date) {
     dateParts = props.date.split("-");
@@ -22,7 +22,7 @@ const Header = (props) => {
     month = parseInt(dateParts[1]) - 1; // Month is zero-based (0-11)
     day = parseInt(dateParts[2]);
 
-    expenseDate = new Date(year, month, day);
+    AttendedDate = new Date(year, month, day);
   }
   return (
     <Fragment>
@@ -31,7 +31,7 @@ const Header = (props) => {
         <HeaderCartButton onClick={props.onShowCart} />
 
         {myUser && props.date && props.submitted && (
-          <ExpenseDate2 date={expenseDate} />
+          <ExpenseDate2 date={AttendedDate} />
         )}
         <div>
           <h2>{myUser && uBaba}</h2>
