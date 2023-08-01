@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UnauthorizedPage from "./components/NotAuthorised/NotAuthorised";
 import Error from "./components/Error";
 import Meals from "./components/Meals/Meals";
+import Database from "./components/UI/person/Database";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "unauthorizedpage", element: <UnauthorizedPage /> },
       { path: "sendreport", element: <Meals /> },
+      { path: "churchDataBase", element: <Database /> },
     ],
   },
 ]);
@@ -132,10 +134,6 @@ function App(props) {
     });
   }, [isSubmitting]);
 
-  const memberS = Array.from(cart.entries()).map(([id, item]) => ({
-    id,
-    ...item,
-  }));
   return (
     <main>
       <RouterProvider router={router} />;

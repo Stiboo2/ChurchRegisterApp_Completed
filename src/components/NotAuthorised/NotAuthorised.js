@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const UnauthorizedPage = () => {
   return (
     <div>
@@ -9,7 +9,8 @@ const UnauthorizedPage = () => {
         DATABASE.
       </p>
       <p>Please contact Admin for rights.</p>
-      {/* You can add more content or styling here */}
+
+      <Link to="/">HOME</Link>
     </div>
   );
 };

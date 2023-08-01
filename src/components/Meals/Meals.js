@@ -13,17 +13,21 @@ import { useGlobalContext } from "../../store/context";
 import "./Meals.css";
 import Header from "../Layout/Header";
 import classes from "./page.module.css";
-
+import Cart from "../Cart/Cart";
 const Meals = () => {
   const [attendanceRecord, setAttendanceRecord] = useState({
     date: "1985-04-07",
     church_branch_id: "branch1",
     pastor_id: "pastor2",
   });
+
+  const [cartIsShown, setCartIsShown] = useState(false);
+
   const [submitted, setSubmitted] = useState(false);
   const [valueFromChild, setValueFromChild] = useState("all");
   const [addMemberButton, setAddMemberButton] = useState(false);
-  const { reloadMembers, setIsSubmitting, addNewMember } = useGlobalContext();
+  const { date, reloadMembers, setIsSubmitting, addNewMember } =
+    useGlobalContext();
 
   const handleAttendanceChange = (date, churchBranchId, pastor_id) => {
     setAttendanceRecord({ date, church_branch_id: churchBranchId, pastor_id });
@@ -47,11 +51,21 @@ const Meals = () => {
     addNewMember(newMember);
     MemberHandler();
   };
-
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
   return (
     <div>
       <div>
-        <Header date={attendanceRecord.date} submitted={submitted} />
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+        <Header
+          onShowCart={showCartHandler}
+          date={date}
+          submitted={submitted}
+        />
       </div>
       <div className="meals">
         {/* Wrap Fragment with a parent div and apply the class */}

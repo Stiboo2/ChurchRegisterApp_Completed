@@ -55,7 +55,7 @@ const MainNavigation = () => {
           </li>
           <li className={classes.navItem}>
             <NavLink
-              to="showcouples"
+              to="UnauthorizedPage"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -65,7 +65,7 @@ const MainNavigation = () => {
           </li>
           <li className={classes.navItem}>
             <NavLink
-              to="review"
+              to="UnauthorizedPage"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -75,7 +75,7 @@ const MainNavigation = () => {
           </li>
           <li className={classes.navItem}>
             <NavLink
-              to="mothers"
+              to="UnauthorizedPage"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -85,7 +85,7 @@ const MainNavigation = () => {
           </li>
           <li className={classes.navItem}>
             <NavLink
-              to="socials"
+              to="UnauthorizedPage"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -105,7 +105,7 @@ const MainNavigation = () => {
           </li>
           <li className={classes.navItem}>
             <NavLink
-              to="unauthorizedpage"
+              to="churchDataBase"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
