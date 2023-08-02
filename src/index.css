@@ -44,6 +44,7 @@ Variables
   --max-width: 1170px;
   --fixed-width: 450px;
   --clr-pink: #ce2424;
+  --clr-background-color: #3f3f3f;
 }
 /*
 =============== 
@@ -64,5 +65,5 @@ html {
 }
 
 body {
-  background-color: #3f3f3f;
+  background-color: var(--clr-background-color);
 }

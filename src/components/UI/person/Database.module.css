@@ -5,13 +5,12 @@
   font: inherit;
   cursor: pointer;
 
-  margin-top: 4rem;
+  margin-top: 0.5rem;
 
   background-color: #eceae9;
   border: 3px solid #141413;
   color: rgb(12, 12, 12);
   width: fit-content;
-  border-radius: 20px;
   font-weight: bold;
   padding: 0.25rem 1rem; /* Adjust the padding as needed */
 }
