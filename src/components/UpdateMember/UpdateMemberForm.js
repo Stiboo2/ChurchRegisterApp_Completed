@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const UpdateMemberForm = ({ data, onUpdate }) => {
   const [title, setTitle] = useState(data.title);
@@ -146,6 +147,9 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
         />
       </label>
       <br />
+      <p>
+        <Link to="../churchDataBase">Back to Church Database</Link>
+      </p>
       <button type="submit">Update</button>
     </form>
   );
