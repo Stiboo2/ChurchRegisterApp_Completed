@@ -16,6 +16,7 @@ import {
   RELOAD_MEMBERS,
   ADD_MEMBER,
   WANT_TO_LOG_IN,
+  EDITMEMBER,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -196,6 +197,71 @@ const reducer = (state, action) => {
 
     return { ...state, cart: newCart, branchs: newBranchs };
   }
+  if (action.type === INCREASE) {
+    const newCart = new Map(state.cart);
+    const itemId = action.payload.id;
+    const item = newCart.get(itemId);
+
+    const newBranchs = new Map(state.branchs);
+    const branchId = action.payload.attendanceRecord.church_branch_id;
+    const branch = newBranchs.get(branchId);
+
+    const newItem = {
+      ...item,
+
+      status: "present",
+      attendance: [...item.attendance, action.payload.attendanceRecord], // Update attendance record
+    };
+    newCart.set(itemId, newItem);
+    if (branch) {
+      const newBranch = {
+        ...branch,
+        attendance: branch.attendance.map((attendance) => {
+          if (attendance.date === action.payload.attendanceRecord.date) {
+            return {
+              ...attendance,
+              total_attended: attendance.total_attended
+                ? attendance.total_attended + 1
+                : 1,
+            };
+          }
+          return attendance;
+        }),
+      };
+      newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+    }
+
+    return { ...state, cart: newCart, branchs: newBranchs };
+  }
+
+  if (action.type === EDITMEMBER) {
+    const newCart = new Map(state.cart);
+    const itemId = action.payload.member.id;
+    const item = newCart.get(itemId);
+    console.log("action.payload.member.id");
+    console.log(action.payload.member.id);
+    const newItem = {
+      ...item,
+
+      title: action.payload.member.title,
+      surname: action.payload.member.surname,
+      cell: action.payload.member.cell,
+      idNumber: action.payload.member.idNumber,
+      img: action.payload.member.img,
+      amount: action.payload.member.amount,
+      Active: action.payload.member.Active,
+      branch: action.payload.member.branch,
+      sealed: action.payload.member.sealed,
+      Birthday: action.payload.member.Birthday,
+      serviceYears: action.payload.member.serviceYears,
+      HomePlace: action.payload.member.HomePlace,
+      status: action.payload.member.status,
+    };
+    newCart.set(itemId, newItem);
+
+    return { ...state, cart: newCart };
+  }
+
   if (action.type === LOADING) {
     return { ...state, loading: true };
   }

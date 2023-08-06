@@ -9,6 +9,7 @@ import UnauthorizedPage from "./components/NotAuthorised/NotAuthorised";
 import Error from "./components/Error";
 import Meals from "./components/Meals/Meals";
 import Database from "./components/UI/person/Database";
+import UpdateMember from "./components/UpdateMember";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "unauthorizedpage", element: <UnauthorizedPage /> },
       { path: "sendreport", element: <Meals /> },
       { path: "churchDataBase", element: <Database /> },
+      { path: "updateMember/:id", element: <UpdateMember /> },
     ],
   },
 ]);

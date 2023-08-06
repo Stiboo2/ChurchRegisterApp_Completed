@@ -18,6 +18,12 @@ const MemberList = () => {
             surname={member.surname}
             branch={member.branch}
             img={member.img}
+            cell={member.cell}
+            idNumber={member.idNumber}
+            serviceYears={member.serviceYears}
+            Birthday={member.Birthday}
+            Active={member.Active}
+            sealed={member.sealed}
           />
         );
       })}

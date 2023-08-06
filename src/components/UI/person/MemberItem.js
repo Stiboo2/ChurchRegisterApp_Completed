@@ -4,6 +4,7 @@ import ExpenseDate from "../../Meals/MealItem/ExpenseDate";
 /* import classes from "./MealItem.module.css"; */
 import { useGlobalContext } from "../../../store/context";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const MemberItem = (props) => {
   const { remove, increase, decrease, insetData, updateAttendanceRecord } =
@@ -15,23 +16,32 @@ const MemberItem = (props) => {
         <ExpenseDate img={props.img} />
         <div className={classes["expense-item__description"]}>
           <div className={classes["discription"]}>
-            <div>{props.title}</div>
-            <h3>{props.surname}</h3>
-            <div className={classes.price}>{props.branch}</div>
+            <div>Title: {props.title}</div>
+            <div>Surname: {props.surname}</div>
+            <div className={classes.price}>Branch: {props.branch}</div>
+          </div>
+          <div className={classes["discription"]}>
+            <div>Cell: {props.cell}</div>
+            <div>ID: {props.idNumber}</div>
+            <div className={classes.price}>Birthday: {props.Birthday}</div>
+          </div>
+          <div className={classes["discription"]}>
+            <div>Active: {props.Active ? "Yes" : "No"}</div>
+            <div>Sealed: {props.sealed ? "Yes" : "No"}</div>
+            <div className={classes.price}>
+              Year/s of Service: {props.serviceYears}
+            </div>
           </div>
           <div className={classes["button_ud"]}>
-            <button
+            <Link
               className={classes["expense-item__pressent"]}
-              onClick={"increaseHandler"}
+              to={`/updateMember/ ${props.id}`}
             >
               Edit
-            </button>
-            <button
-              className={classes["expense-item__absent"]}
-              onClick={"decreaseHandler"}
-            >
+            </Link>
+            <Link className={classes["expense-item__absent"]} to="/">
               Delete
-            </button>
+            </Link>
           </div>
         </div>
       </Card>

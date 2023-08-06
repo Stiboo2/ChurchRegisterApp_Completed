@@ -9,6 +9,7 @@ import {
   REMOVE_MEMBER,
   INCREASE,
   DECREASE,
+  EDITMEMBER,
   LOADING,
   DISPLAY_ITEMS,
   NEW_BRANCH_DATE,
@@ -67,6 +68,9 @@ export const AppProvider = ({ children }) => {
   const increase = (id, attendanceRecord) => {
     dispatch({ type: INCREASE, payload: { id, attendanceRecord } });
   };
+  const editmember = (member) => {
+    dispatch({ type: EDITMEMBER, payload: { member } });
+  };
   const setIsSubmitting = (status) => {
     dispatch({ type: SUBMITING, payload: { status } });
   };
@@ -106,6 +110,7 @@ export const AppProvider = ({ children }) => {
         removeMember,
         increase,
         decrease,
+        editmember,
         updateAttendanceRecord,
         totalAmount,
         totalCost,

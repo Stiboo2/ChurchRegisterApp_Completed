@@ -14,3 +14,4 @@ export const BRANCH_NAME = "BRANCH_NAME";
 export const RELOAD_MEMBERS = "RELOAD_MEMBERS";
 export const ADD_MEMBER = "ADD_MEMBER";
 export const WANT_TO_LOG_IN = "WANT_TO_LOG_IN";
+export const EDITMEMBER = "EDITMEMBER";
