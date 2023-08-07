@@ -5,6 +5,7 @@ import {
   REMOVE_MEMBER,
   INCREASE,
   DECREASE,
+  DELETA,
   LOADING,
   DISPLAY_ITEMS,
   NEW_BRANCH_DATE,
@@ -197,41 +198,18 @@ const reducer = (state, action) => {
 
     return { ...state, cart: newCart, branchs: newBranchs };
   }
-  if (action.type === INCREASE) {
+  if (action.type === DELETA) {
     const newCart = new Map(state.cart);
     const itemId = action.payload.id;
     const item = newCart.get(itemId);
 
-    const newBranchs = new Map(state.branchs);
-    const branchId = action.payload.attendanceRecord.church_branch_id;
-    const branch = newBranchs.get(branchId);
-
     const newItem = {
       ...item,
 
-      status: "present",
-      attendance: [...item.attendance, action.payload.attendanceRecord], // Update attendance record
+      Active: false,
     };
     newCart.set(itemId, newItem);
-    if (branch) {
-      const newBranch = {
-        ...branch,
-        attendance: branch.attendance.map((attendance) => {
-          if (attendance.date === action.payload.attendanceRecord.date) {
-            return {
-              ...attendance,
-              total_attended: attendance.total_attended
-                ? attendance.total_attended + 1
-                : 1,
-            };
-          }
-          return attendance;
-        }),
-      };
-      newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
-    }
-
-    return { ...state, cart: newCart, branchs: newBranchs };
+    return { ...state, cart: newCart };
   }
 
   if (action.type === EDITMEMBER) {

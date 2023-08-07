@@ -1,15 +1,26 @@
 import classes from "./MemberItem.module.css";
 import Card from "../MemberCard/Card";
 import ExpenseDate from "../../Meals/MealItem/ExpenseDate";
-/* import classes from "./MealItem.module.css"; */
 import { useGlobalContext } from "../../../store/context";
-import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Delete from "./Delete";
 const MemberItem = (props) => {
-  const { remove, increase, decrease, insetData, updateAttendanceRecord } =
-    useGlobalContext();
+  const [showDeleteSmg, setShowDeleteSmg] = useState(false);
+  const [deleteConfirmed, setDeleteConfirmed] = useState(false);
 
+  const { deleteMember } = useGlobalContext();
+
+  const deleteHanler = () => {
+    setShowDeleteSmg(true);
+  };
+
+  const hideDeleteHandler = (status) => {
+    setShowDeleteSmg(false);
+    if (status) {
+      deleteMember(props.id);
+    }
+  };
   return (
     <li>
       <Card className={classes["expense-item"]}>
@@ -39,12 +50,16 @@ const MemberItem = (props) => {
             >
               Edit
             </Link>
-            <Link className={classes["expense-item__absent"]} to="/">
+            <button
+              className={classes["expense-item__absent"]}
+              onClick={deleteHanler}
+            >
               Delete
-            </Link>
+            </button>
           </div>
         </div>
       </Card>
+      {showDeleteSmg && <Delete onClose={hideDeleteHandler} />}{" "}
     </li>
   );
 };

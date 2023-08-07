@@ -10,6 +10,7 @@ import {
   INCREASE,
   DECREASE,
   EDITMEMBER,
+  DELETA,
   LOADING,
   DISPLAY_ITEMS,
   NEW_BRANCH_DATE,
@@ -68,6 +69,9 @@ export const AppProvider = ({ children }) => {
   const increase = (id, attendanceRecord) => {
     dispatch({ type: INCREASE, payload: { id, attendanceRecord } });
   };
+  const deleteMember = (id) => {
+    dispatch({ type: DELETA, payload: { id } });
+  };
   const editmember = (member) => {
     dispatch({ type: EDITMEMBER, payload: { member } });
   };
@@ -111,6 +115,7 @@ export const AppProvider = ({ children }) => {
         increase,
         decrease,
         editmember,
+        deleteMember,
         updateAttendanceRecord,
         totalAmount,
         totalCost,

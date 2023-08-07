@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ChurchAttendanceTable from "./ChurchAttendanceTable";
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
-//import capetownBranch from "../Meals/Data/churchDa";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import { useGlobalContext } from "../../store/context";
-//import MealItemForm from "../Meals/MealItem/MealItemForm";
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);

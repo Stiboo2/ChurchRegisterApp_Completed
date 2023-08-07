@@ -10,6 +10,10 @@ const MemberList = () => {
     <ul className={classes["expenses-list"]}>
       {members.map((memberCombo) => {
         const [id, member] = memberCombo;
+        if (member.Active !== true) {
+          return null; // Skip rendering the CartItem component
+        }
+
         return (
           <MemberItem
             key={id}
