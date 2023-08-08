@@ -1,11 +1,10 @@
 import Card from "./Card";
 import React from "react";
 import classes from "./ActiveMembers.module.css";
-import ExpensesList from "../../Meals/MealItem/ExpensesList";
 import { useGlobalContext } from "../../../store/context";
 import MemberList from "./MemberList";
 
-const ActiveMembers = ({ attendanceRecord, catalog }) => {
+const ActiveMembers = ({ showNewMember }) => {
   const { cart } = useGlobalContext();
   const cartArray = Array.from(cart.entries());
   if (cartArray.length === 0) {
@@ -23,7 +22,7 @@ const ActiveMembers = ({ attendanceRecord, catalog }) => {
   return (
     <section className={classes.meals}>
       <Card>
-        <MemberList></MemberList>
+        <MemberList showNewMember={showNewMember} />
       </Card>
     </section>
   );

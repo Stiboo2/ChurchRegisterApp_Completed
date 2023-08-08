@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../../../store/context";
 import MemberItem from "./MemberItem";
 import classes from "./MemberList.module.css";
-const MemberList = () => {
+const MemberList = ({ showNewMember }) => {
   const { cart } = useGlobalContext();
   const members = Array.from(cart.entries());
 
@@ -10,7 +10,8 @@ const MemberList = () => {
     <ul className={classes["expenses-list"]}>
       {members.map((memberCombo) => {
         const [id, member] = memberCombo;
-        if (member.Active !== true) {
+
+        if (!member.Active || (showNewMember && member.sealed)) {
           return null; // Skip rendering the CartItem component
         }
 

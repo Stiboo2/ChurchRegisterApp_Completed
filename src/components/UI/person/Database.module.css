@@ -4,9 +4,6 @@
 .buttonAdd {
   font: inherit;
   cursor: pointer;
-
-  margin-top: 0.5rem;
-
   background-color: #eceae9;
   border: 3px solid #141413;
   color: rgb(12, 12, 12);
@@ -14,7 +11,40 @@
   font-weight: bold;
   padding: 0.25rem 1rem; /* Adjust the padding as needed */
 }
+.container {
+  display: flex;
+  justify-content: center;
+}
 
+.buttons {
+  display: flex;
+  font: inherit;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  gap: 2rem;
+}
+
+/* You can keep the rest of your existing button styles here */
+
+.buttonsa {
+  display: flex;
+  font: inherit;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  font-weight: bold;
+  gap: 2rem;
+
+  justify-content: space-between;
+}
+.parentContainer {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  flex-direction: column;
+}
 .buttonAdd:hover,
 .buttonAdd:active {
   background-color: #641e03;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import classes from "./UpdateMemberForm.module.css";
 
 const UpdateMemberForm = ({ data, onUpdate }) => {
   const [title, setTitle] = useState(data.title);
@@ -38,7 +39,10 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={classes.EditForm} onSubmit={handleSubmit}>
+      <div className={classes.ImageContainer}>
+        <img src={img} alt="Your Image" className={classes.Image} />
+      </div>
       <label>
         Title :
         <input
@@ -147,10 +151,14 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
         />
       </label>
       <br />
-      <p>
-        <Link to="../churchDataBase">Back to Church Database</Link>
-      </p>
-      <button type="submit">Update</button>
+      <div className={classes.EditbuttonItem}>
+        <button className={classes.buttonUpdate} type="submit">
+          Update
+        </button>
+        <div className={classes.buttonBack}>
+          <Link to="../churchDataBase">Back to Church Database</Link>
+        </div>
+      </div>
     </form>
   );
 };

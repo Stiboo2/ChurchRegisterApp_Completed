@@ -60,7 +60,7 @@ const MemberItem = (props) => {
             </div>
           </div>
         </Card>
-        {showDeleteSmg && <Delete onClose={hideDeleteHandler} />}{" "}
+        {showDeleteSmg && <Delete onClose={hideDeleteHandler} />}
       </li>
     </div>
   );
