@@ -4,4 +4,16 @@
   border-radius: 14px;
   background-color: rgba(18, 91, 94, 0.548);
   margin-top: inherit;
+  color: white;
+  font-weight: bold;
+}
+
+/* Calculated.module.css */
+
+.yellowText {
+  color: yellow;
+  font-weight: bold;
+}
+.underlineText {
+  text-decoration: underline;
 }

@@ -30,7 +30,7 @@ const Database = () => {
             Show All Members
           </button>
           <button className={classes.buttonAdd} onClick={toggleNewemberHandler}>
-            {showNewMember ? "Show New Members" : "Show All Members"}
+            {!showNewMember ? "Show New Members" : "Show All Members"}
           </button>
         </div>
       </div>

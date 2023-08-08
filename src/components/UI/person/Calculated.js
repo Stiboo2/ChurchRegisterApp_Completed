@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+// Calculated.js
+import React from "react";
 import classes from "./Calculated.module.css";
 
 const Calculated = ({
@@ -7,23 +8,32 @@ const Calculated = ({
   branchCounts,
   titleCounts,
 }) => {
-  useEffect(() => {
-    console.log(
-      "Number of members with sealed=false:",
-      sealedFalseCount,
-      CountMembers
-    );
-    console.log("Branch Counts:", branchCounts);
-    console.log("Branch Title:", titleCounts);
-  }, []);
-
   return (
     <div className={classes.calculatedCard}>
-      <p>
-        Number of members with sealed=false: {sealedFalseCount}, {CountMembers}
-      </p>
-      <p>Branch Counts: {JSON.stringify(branchCounts)}</p>
-      <p>Branch Title: {JSON.stringify(titleCounts)}</p>
+      {CountMembers !== sealedFalseCount && (
+        <div>Number of All members: {CountMembers}</div>
+      )}
+      <div>Number of New members: {sealedFalseCount}</div>
+      <div>
+        <span className={classes.underlineText}>Branch Counts:</span>
+        {Object.keys(branchCounts).map((branch) => (
+          <div key={branch}>
+            {branch}:{" "}
+            <span className={classes.yellowText}>{branchCounts[branch]}</span>{" "}
+            Members
+          </div>
+        ))}
+      </div>
+      <div>
+        <span className={classes.underlineText}>Title Counts:</span>
+        {Object.keys(titleCounts).map((title) => (
+          <div key={title}>
+            {title}:{" "}
+            <span className={classes.yellowText}>{titleCounts[title]}</span>{" "}
+            Members
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
