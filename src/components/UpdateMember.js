@@ -30,8 +30,6 @@ const UpdateMember = () => {
   };
   return (
     <>
-      <div>UpdateMember</div>
-      <p>{id}</p>
       <UpdateMemberForm data={data} onUpdate={handleUpdate} />
     </>
   );

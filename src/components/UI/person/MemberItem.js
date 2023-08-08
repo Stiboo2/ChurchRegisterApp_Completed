@@ -1,6 +1,6 @@
 import classes from "./MemberItem.module.css";
 import Card from "../MemberCard/Card";
-import ExpenseDate from "../../Meals/MealItem/ExpenseDate";
+import IdPhoto from "./IdPhoto";
 import { useGlobalContext } from "../../../store/context";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ const MemberItem = (props) => {
     <div>
       <li>
         <Card className={classes["expense-item"]}>
-          <ExpenseDate img={props.img} />
+          <IdPhoto img={props.img} />
           <div className={classes["expense-item__description"]}>
             <div className={classes["discription"]}>
               <div>Title: {props.title}</div>

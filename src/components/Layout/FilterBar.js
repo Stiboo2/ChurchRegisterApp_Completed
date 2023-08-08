@@ -7,7 +7,7 @@ const FilterBar = ({ onValueChange }) => {
   const [branchCatelog, setBranchCatelog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
-  const [categ, setCateg] = useState([]);
+  const [categ, setCateg] = useState(["all"]);
   const [branchItemss, setbranchItemss] = useState([]);
   const { cart } = useGlobalContext();
   const members = Array.from(cart.entries());

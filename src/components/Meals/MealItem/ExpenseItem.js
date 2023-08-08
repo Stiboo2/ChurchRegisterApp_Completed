@@ -1,6 +1,6 @@
 import "./ExpenseItem.css";
 import Card from "../../UI/MemberCard/Card";
-import ExpenseDate from "./ExpenseDate";
+import IdPhotoRound from "./IdPhotoRound";
 import classes from "./MealItem.module.css";
 import { useGlobalContext } from "../../../store/context";
 import { useEffect } from "react";
@@ -39,7 +39,7 @@ const ExpenseItem = (props) => {
   return (
     <li>
       <Card className="expense-item">
-        <ExpenseDate img={props.img} />
+        <IdPhotoRound img={props.img} />
         <div className="expense-item__description">
           <div className="discription">
             <div>{props.title}</div>

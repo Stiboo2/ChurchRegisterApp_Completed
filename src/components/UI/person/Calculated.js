@@ -11,9 +11,15 @@ const Calculated = ({
   return (
     <div className={classes.calculatedCard}>
       {CountMembers !== sealedFalseCount && (
-        <div>Number of All members: {CountMembers}</div>
+        <div>
+          Number of All members:{" "}
+          <span className={classes.yellowText}>{CountMembers}</span>
+        </div>
       )}
-      <div>Number of New members: {sealedFalseCount}</div>
+      <div>
+        Number of New members:{" "}
+        <span className={classes.yellowText}>{sealedFalseCount}</span>
+      </div>
       <div>
         <span className={classes.underlineText}>Branch Counts:</span>
         {Object.keys(branchCounts).map((branch) => (
