@@ -39,31 +39,42 @@
   justify-content: flex-end;
   gap: 1rem;
 }
-
-.actions button {
+.cancelButten {
   font: inherit;
-  color: #5a1a01;
+  color: #fffefe;
   cursor: pointer;
   background-color: transparent;
-  border: none;
+  border-color: #5a1a01;
   border-radius: 25px;
   padding: 0.5rem 2rem;
+  font-weight: bold;
 }
 
-.actions button:hover,
-.actions button:active {
-  background-color: #ffe6dc;
-}
-
-.actions .submit {
-  border: 1px solid #5a1a01;
+.submitbutton {
+  font: inherit;
+  color: #fffcfb;
+  cursor: pointer;
   background-color: #5a1a01;
-  color: white;
+  border-color: white;
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+  font-weight: bold;
 }
 
-.actions .submit:hover,
-.actions .submit:active {
-  background-color: #7a2706;
+.actions .cancelButten:hover,
+.actions .cancelButten:active {
+  border-color: solid #5a1a01;
+  background-color: #f8e220;
+  color: white;
+  font-weight: bold;
+}
+
+.actions .submitbutton:hover,
+.actions .submitbutton:active {
+  border-color: 1px solid #5a1a01;
+  background-color: #f8e220;
+  color: white;
+  font-weight: bold;
 }
 
 .invalid label {

@@ -10,6 +10,7 @@ import Error from "./components/Error";
 import Meals from "./components/Meals/Meals";
 import Database from "./components/UI/person/Database";
 import UpdateMember from "./components/UpdateMember";
+import BirthDay from "./components/BirthDays/BirthDay";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: "sendreport", element: <Meals /> },
       { path: "churchDataBase", element: <Database /> },
       { path: "updateMember/:id", element: <UpdateMember /> },
+      { path: "birthday", element: <BirthDay /> },
     ],
   },
 ]);

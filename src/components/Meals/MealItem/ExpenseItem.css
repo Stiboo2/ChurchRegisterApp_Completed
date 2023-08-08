@@ -5,6 +5,7 @@
   padding: 0.5rem;
   margin: 1rem 0;
   background-color: #cec763;
+  border-radius: 12px;
 }
 .button_ud {
   display: flex;

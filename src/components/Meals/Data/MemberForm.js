@@ -149,10 +149,14 @@ const MemberForm = (props) => {
       </div>
 
       <div className={classes.actions}>
-        <button type="button" onClick={cancelHandler}>
+        <button
+          type="button"
+          className={classes.cancelButten}
+          onClick={cancelHandler}
+        >
           Cancel
         </button>
-        <button className={classes.submit}>Confirm</button>
+        <button className={classes.submitbutton}>Confirm</button>
       </div>
     </form>
   );
