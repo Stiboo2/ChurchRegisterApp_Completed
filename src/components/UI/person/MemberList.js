@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGlobalContext } from "../../../store/context";
 import MemberItem from "./MemberItem";
 import classes from "./MemberList.module.css";
-const MemberList = ({ showNewMember }) => {
+import Calculated from "./Calculated";
+
+const MemberList = ({ showNewMember, onDataReceived }) => {
   const { cart } = useGlobalContext();
   const members = Array.from(cart.entries());
 
+  // Count the number of members with sealed set to false
+  const branchCounts = {};
+  const titleCounts = {};
+  let sealedFalseCount = 0,
+    CountMembers = 0;
+  const sendDataToParent = () => {
+    onDataReceived(branchCounts, titleCounts, sealedFalseCount, CountMembers);
+  };
+  useEffect(() => {
+    sendDataToParent();
+  }, [showNewMember, cart, branchCounts]);
   return (
     <ul className={classes["expenses-list"]}>
       {members.map((memberCombo) => {
@@ -14,6 +27,15 @@ const MemberList = ({ showNewMember }) => {
         if (!member.Active || (showNewMember && member.sealed)) {
           return null; // Skip rendering the CartItem component
         }
+        CountMembers++;
+
+        if (!member.sealed) {
+          sealedFalseCount++;
+        }
+
+        titleCounts[member.title] = (titleCounts[member.title] || 0) + 1;
+
+        branchCounts[member.branch] = (branchCounts[member.branch] || 0) + 1;
 
         return (
           <MemberItem
@@ -35,4 +57,5 @@ const MemberList = ({ showNewMember }) => {
     </ul>
   );
 };
+
 export default MemberList;

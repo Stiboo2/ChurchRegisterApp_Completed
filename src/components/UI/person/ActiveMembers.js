@@ -4,7 +4,7 @@ import classes from "./ActiveMembers.module.css";
 import { useGlobalContext } from "../../../store/context";
 import MemberList from "./MemberList";
 
-const ActiveMembers = ({ showNewMember }) => {
+const ActiveMembers = ({ showNewMember, onDataReceived }) => {
   const { cart } = useGlobalContext();
   const cartArray = Array.from(cart.entries());
   if (cartArray.length === 0) {
@@ -22,7 +22,10 @@ const ActiveMembers = ({ showNewMember }) => {
   return (
     <section className={classes.meals}>
       <Card>
-        <MemberList showNewMember={showNewMember} />
+        <MemberList
+          showNewMember={showNewMember}
+          onDataReceived={onDataReceived}
+        />
       </Card>
     </section>
   );
