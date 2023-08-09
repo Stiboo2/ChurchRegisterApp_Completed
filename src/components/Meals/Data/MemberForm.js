@@ -6,17 +6,18 @@ import classes from "./MemberForm.module.css";
 const isEmpty = (value) => value.trim() === "";
 const isTenChars = (value) => /^\d{10}$/.test(value.trim());
 const MemberForm = (props) => {
+  const [imageInputRef, setImageInputRef] = useState("");
   const [formInputsValidity, setFormInputsValidity] = useState({
     name: true,
     serviceYears: true,
     birthday: true,
     street: true,
-    city: true,
     postalCode: true,
     sealed: true,
     cell: true,
     idNumber: true,
     homePlace: true,
+    image: true,
   });
 
   const nameInputRef = useRef();
@@ -25,7 +26,6 @@ const MemberForm = (props) => {
   const streetInputRef = useRef();
   const postalCodeInputRef = useRef();
   const sealedInputRef = useRef();
-  const cityInputRef = useRef();
   const cellInputRef = useRef();
   const idNumberInputRef = useRef();
   const homePlaceInputRef = useRef();
@@ -39,27 +39,27 @@ const MemberForm = (props) => {
     const enteredStreet = streetInputRef.current.value;
     const enteredPostalCode = postalCodeInputRef.current.value;
     const enteredsealed = sealedInputRef.current.value;
-    const enteredCity = cityInputRef.current.value;
     const enteredCell = cellInputRef.current.value;
     const enteredIdNumber = idNumberInputRef.current.value;
-    const enteredHomePlace = idNumberInputRef.current.value;
+    const enteredHomePlace = homePlaceInputRef.current.value;
+    const enteredImage = imageInputRef;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredserviceYearsIsValid = !isEmpty(enteredName);
     const enteredbirthdayIsValid = !isEmpty(enteredbirthday);
     const enteredStreetIsValid = true; // Always valid, regardless of input
-    const enteredCityIsValid = true; // Always valid, regardless of input
     const enteredPostalCodeIsValid = true; // Always valid, regardless of input
     const enteredsealedIsValid = true; // Always valid, regardless of input
     const enteredCellIsValid = isTenChars(enteredCell);
     const enteredIdNumberIsValid = true; // Always valid, regardless of input
     const enteredHomePlaceIsValid = true; // Always valid, regardless of input
+    const enteredImageIsValid = true; // Always valid, regardless of input
 
     setFormInputsValidity({
       name: enteredNameIsValid,
+      image: enteredImageIsValid,
       birthday: enteredbirthdayIsValid,
       street: enteredStreetIsValid,
-      city: enteredCityIsValid,
       postalCode: enteredPostalCodeIsValid,
       sealed: enteredPostalCodeIsValid,
       cell: enteredCellIsValid,
@@ -70,9 +70,9 @@ const MemberForm = (props) => {
 
     const formIsValid =
       enteredNameIsValid &&
+      enteredImageIsValid &&
       enteredbirthdayIsValid &&
       enteredStreetIsValid &&
-      enteredCityIsValid &&
       enteredPostalCodeIsValid &&
       enteredsealedIsValid &&
       enteredCellIsValid &&
@@ -86,9 +86,9 @@ const MemberForm = (props) => {
 
     props.onConfirm({
       name: enteredName,
+      image: enteredImage,
       birthday: enteredName,
       title: enteredStreet,
-      image: enteredCity,
       branch: enteredPostalCode,
       branch: enteredsealed,
       cell: enteredCell,
@@ -116,9 +116,7 @@ const MemberForm = (props) => {
   const sealedControlClasses = `${classes.control} ${
     formInputsValidity.sealed ? "" : classes.invalid
   }`;
-  const cityControlClasses = `${classes.control} ${
-    formInputsValidity.city ? "" : classes.invalid
-  }`;
+
   const cellControlClasses = `${classes.control} ${
     formInputsValidity.cell ? "" : classes.invalid
   }`;
@@ -132,10 +130,14 @@ const MemberForm = (props) => {
   const cancelHandler = () => {
     props.onCancelMeal();
   };
+  const imageUploadHandler = (imageURL) => {
+    setImageInputRef(imageURL);
+    console.log(imageURL);
+  };
 
   return (
     <form className={classes.forma} onSubmit={confirmHandler}>
-      <ImageUpload />
+      <ImageUpload onImageUpload={imageUploadHandler} />
       <div className={nameControlClasses}>
         <label htmlFor="name">Name and Surname</label>
         <input type="text" id="name" ref={nameInputRef} />
@@ -184,19 +186,6 @@ const MemberForm = (props) => {
         <input type="text" id="homePlace" ref={homePlaceInputRef} />
         {!formInputsValidity.homePlace && (
           <p>Please enter a valid HomePlace!</p>
-        )}
-      </div>
-      <div className={cityControlClasses}>
-        <label htmlFor="city">Image</label>
-        <input
-          type="file"
-          id="city"
-          ref={cityInputRef}
-          directory="true" // Update the attribute to directory="true"
-          webkitdirectory="true" // Add webkitdirectory="true"
-        />
-        {!formInputsValidity.city && (
-          <p>Please select a valid image from the folder!</p>
         )}
       </div>
 

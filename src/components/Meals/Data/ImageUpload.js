@@ -1,20 +1,22 @@
 import { useState } from "react";
 import classes from "./ImageUpload.module.css";
-const ImageUpload = () => {
+const ImageUpload = (props) => {
   const [IdPhoto, setIdPhoto] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showUploadeBtn, setIshowUploadeBtn] = useState(false);
   const upload_preset = "qgj5qdsw";
 
   const handleImageChange = (e) => {
     const selectedPhoto = e.target.files[0];
     setIdPhoto(selectedPhoto);
     setImagePreview(URL.createObjectURL(selectedPhoto));
+    setIshowUploadeBtn(true);
   };
 
   const uploadImage = async () => {
     setIsLoading(true);
-    console.log("INSIDE IFs");
+    setIshowUploadeBtn(false);
     let imageURL;
     try {
       if (
@@ -38,9 +40,9 @@ const ImageUpload = () => {
         const imgData = await response.json();
         imageURL = imgData.url.toString();
 
-        setImagePreview(null);
+        // setImagePreview(null);
       }
-      console.log(imageURL); // Log the uploaded image URL
+      props.onImageUpload(imageURL);
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +56,7 @@ const ImageUpload = () => {
         <div className={classes.imageCard}>
           <div className={classes["profile-photo"]}>
             <div>
-              {imagePreview && <img src={imagePreview} alt="profileImage" />}
+              {IdPhoto && <img src={imagePreview} alt="profileImage" />}
             </div>
           </div>
           <div className="--form-control">
@@ -71,13 +73,13 @@ const ImageUpload = () => {
               />
             </p>
             <p>
-              {isLoading ? (
-                "Uploading..."
-              ) : (
-                <button onClick={uploadImage} className={classes.imageSave}>
-                  Upload Image
-                </button>
-              )}
+              {isLoading
+                ? "Uploading..."
+                : showUploadeBtn && (
+                    <button onClick={uploadImage} className={classes.imageSave}>
+                      Upload Image
+                    </button>
+                  )}
             </p>
           </div>
         </div>
