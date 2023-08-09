@@ -80,23 +80,24 @@ const Meals = () => {
               <MemberForm onConfirm={SaveMember} onCancelMeal={MemberHandler} />
             )}
             {!addMemberButton && (
-              <button className={classes.buttonAdd} onClick={MemberHandler}>
-                Add New Member
-              </button>
-            )}
+              <>
+                <button className={classes.buttonAdd} onClick={MemberHandler}>
+                  Add New Member
+                </button>
 
-            <AvailableMeals
-              attendanceRecord={attendanceRecord}
-              catalog={valueFromChild}
-            />
-            {
-              <button
-                className={classes.buttonreload}
-                onClick={buttonReloadHandler}
-              >
-                Realod Members
-              </button>
-            }
+                <AvailableMeals
+                  attendanceRecord={attendanceRecord}
+                  catalog={valueFromChild}
+                />
+
+                <button
+                  className={classes.buttonreload}
+                  onClick={buttonReloadHandler}
+                >
+                  Reload Members
+                </button>
+              </>
+            )}
           </Fragment>
         )}
       </div>
