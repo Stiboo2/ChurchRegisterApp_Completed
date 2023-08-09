@@ -1,24 +1,5 @@
-.formac {
-  margin-top: 100rem;
-  margin: 1rem 0;
-  height: 30rem; /* Increase height to 30rem */
-  align-items: center;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.control {
-  margin-bottom: 0.5rem;
-}
-
-.control label {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.control input {
+.custom-select {
+  position: relative;
   font: inherit;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -26,67 +7,22 @@
   max-width: 100%;
 }
 
-.control select option {
-  font: inherit;
+.custom-select select {
+  appearance: none;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 20rem;
-  max-width: 100%;
+  width: 100%;
+  border-radius: 5px;
 }
 
-.option {
-  font: inherit;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 20rem;
-  max-width: 100%;
-}
-
-.select option {
-  font: inherit;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 20rem;
-  max-width: 100%;
-}
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.actions button {
-  font: inherit;
-  color: #5a1a01;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  border-radius: 25px;
-  padding: 0.5rem 2rem;
-}
-
-.actions button:hover,
-.actions button:active {
-  background-color: #ffe6dc;
-}
-
-.actions .submit {
-  border: 1px solid #5a1a01;
-  background-color: #5a1a01;
-  color: white;
-}
-
-.actions .submit:hover,
-.actions .submit:active {
-  background-color: #7a2706;
-}
-
-.invalid label {
-  color: #ca3e51;
-}
-
-.invalid input {
-  border-color: #aa0b20;
-  background-color: #ffeff1;
+.arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 5px solid #333;
 }

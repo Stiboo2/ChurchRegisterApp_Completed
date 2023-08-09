@@ -2,7 +2,6 @@ import { useContext, useReducer, createContext } from "react";
 import reducer from "./reducer";
 
 import capetownBranch from "../components/Meals/Data/churchDa";
-import memberS from "../components/Meals/Data/membersData";
 import {
   CLEAR_CART,
   REMOVE,
@@ -11,8 +10,6 @@ import {
   DECREASE,
   EDITMEMBER,
   DELETA,
-  LOADING,
-  DISPLAY_ITEMS,
   NEW_BRANCH_DATE,
   UPDATE_ATTENDANCE_RECORD,
   NOTIFICATION_DISPLAY,
