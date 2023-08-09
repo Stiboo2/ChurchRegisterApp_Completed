@@ -94,7 +94,7 @@ const MemberForm = (props) => {
       cell: enteredCell,
       serviceYears: enteredserviceYears,
       idNumber: enteredIdNumber,
-      idNumber: enteredHomePlace,
+      homePlace: enteredHomePlace,
     });
   };
 
