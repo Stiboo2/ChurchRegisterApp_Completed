@@ -11,8 +11,8 @@ const MemberForm = (props) => {
     name: true,
     serviceYears: true,
     birthday: true,
-    street: true,
-    postalCode: true,
+    title: true,
+    branch: true,
     sealed: true,
     cell: true,
     idNumber: true,
@@ -23,8 +23,8 @@ const MemberForm = (props) => {
   const nameInputRef = useRef();
   const serviceYearsInputRef = useRef();
   const birthdayInputRef = useRef();
-  const streetInputRef = useRef();
-  const postalCodeInputRef = useRef();
+  const titleInputRef = useRef();
+  const branchInputRef = useRef();
   const sealedInputRef = useRef();
   const cellInputRef = useRef();
   const idNumberInputRef = useRef();
@@ -36,8 +36,8 @@ const MemberForm = (props) => {
     const enteredName = nameInputRef.current.value;
     const enteredserviceYears = serviceYearsInputRef.current.value;
     const enteredbirthday = birthdayInputRef.current.value;
-    const enteredStreet = streetInputRef.current.value;
-    const enteredPostalCode = postalCodeInputRef.current.value;
+    const enteredtitle = titleInputRef.current.value;
+    const enteredbranch = branchInputRef.current.value;
     const enteredsealed = sealedInputRef.current.value;
     const enteredCell = cellInputRef.current.value;
     const enteredIdNumber = idNumberInputRef.current.value;
@@ -47,21 +47,21 @@ const MemberForm = (props) => {
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredserviceYearsIsValid = !isEmpty(enteredName);
     const enteredbirthdayIsValid = !isEmpty(enteredbirthday);
-    const enteredStreetIsValid = true; // Always valid, regardless of input
-    const enteredPostalCodeIsValid = true; // Always valid, regardless of input
+    const enteredtitleIsValid = !isEmpty(enteredtitle);
+    const enteredbranchIsValid = !isEmpty(enteredbranch);
     const enteredsealedIsValid = true; // Always valid, regardless of input
     const enteredCellIsValid = isTenChars(enteredCell);
     const enteredIdNumberIsValid = true; // Always valid, regardless of input
     const enteredHomePlaceIsValid = true; // Always valid, regardless of input
-    const enteredImageIsValid = true; // Always valid, regardless of input
+    const enteredImageIsValid = !isEmpty(enteredImage);
 
     setFormInputsValidity({
       name: enteredNameIsValid,
       image: enteredImageIsValid,
       birthday: enteredbirthdayIsValid,
-      street: enteredStreetIsValid,
-      postalCode: enteredPostalCodeIsValid,
-      sealed: enteredPostalCodeIsValid,
+      title: enteredtitleIsValid,
+      branch: enteredbranchIsValid,
+      sealed: enteredbranchIsValid,
       cell: enteredCellIsValid,
       serviceYears: enteredserviceYearsIsValid,
       idNumber: enteredIdNumberIsValid,
@@ -72,8 +72,8 @@ const MemberForm = (props) => {
       enteredNameIsValid &&
       enteredImageIsValid &&
       enteredbirthdayIsValid &&
-      enteredStreetIsValid &&
-      enteredPostalCodeIsValid &&
+      enteredtitleIsValid &&
+      enteredbranchIsValid &&
       enteredsealedIsValid &&
       enteredCellIsValid &&
       enteredserviceYearsIsValid &&
@@ -88,8 +88,8 @@ const MemberForm = (props) => {
       name: enteredName,
       image: enteredImage,
       birthday: enteredName,
-      title: enteredStreet,
-      branch: enteredPostalCode,
+      title: enteredtitle,
+      branch: enteredbranch,
       branch: enteredsealed,
       cell: enteredCell,
       serviceYears: enteredserviceYears,
@@ -107,11 +107,11 @@ const MemberForm = (props) => {
   const birthdayControlClasses = `${classes.control} ${
     formInputsValidity.birthday ? "" : classes.invalid
   }`;
-  const streetControlClasses = `${classes.control} ${
-    formInputsValidity.street ? "" : classes.invalid
+  const titleControlClasses = `${classes.control} ${
+    formInputsValidity.title ? "" : classes.invalid
   }`;
-  const postalCodeControlClasses = `${classes.control} ${
-    formInputsValidity.postalCode ? "" : classes.invalid
+  const branchControlClasses = `${classes.control} ${
+    formInputsValidity.branch ? "" : classes.invalid
   }`;
   const sealedControlClasses = `${classes.control} ${
     formInputsValidity.sealed ? "" : classes.invalid
@@ -125,6 +125,9 @@ const MemberForm = (props) => {
   }`;
   const homePlaceControlClasses = `${classes.control} ${
     formInputsValidity.homePlace ? "" : classes.invalid
+  }`;
+  const imageControlClasses = `${classes.control} ${
+    formInputsValidity.image ? "" : classes.invalid
   }`;
 
   const cancelHandler = () => {
@@ -141,7 +144,9 @@ const MemberForm = (props) => {
       <div className={nameControlClasses}>
         <label htmlFor="name">Name and Surname</label>
         <input type="text" id="name" ref={nameInputRef} />
-        {!formInputsValidity.name && <p>Please enter a valid name!</p>}
+        {!formInputsValidity.name && (
+          <p className={classes.redParagraph}>Please enter a valid name!</p>
+        )}
       </div>
       <div className={serviceYearsControlClasses}>
         <label htmlFor="serviceYears">Number of years</label>
@@ -159,40 +164,52 @@ const MemberForm = (props) => {
           <div className="arrow"></div>
         </div>
         {!formInputsValidity.serviceYears && (
-          <p>Please select a valid number of years!</p>
+          <p className={classes.redParagraph}>
+            Please select a valid number of years!
+          </p>
         )}
       </div>
 
       <div className={birthdayControlClasses}>
         <label htmlFor="birthday">Birthday</label>
         <input type="date" id="birthday" ref={birthdayInputRef} />
-        {!formInputsValidity.birthday && <p>Please enter a valid birthday!</p>}
+        {!formInputsValidity.birthday && (
+          <p className={classes.redParagraph}>Please enter a valid birthday!</p>
+        )}
       </div>
 
       <div className={cellControlClasses}>
         <label htmlFor="cell">Cell Number</label>
         <input type="text" id="cell" ref={cellInputRef} />
         {!formInputsValidity.cell && (
-          <p>Please enter a valid Cell Phone Number!</p>
+          <p className={classes.redParagraph}>
+            Please enter a valid Cell Phone Number!
+          </p>
         )}
       </div>
       <div className={idNumberControlClasses}>
         <label htmlFor="idNumber">ID Number</label>
         <input type="text" id="idNumber" ref={idNumberInputRef} />
-        {!formInputsValidity.idNumber && <p>Please enter a valid ID number!</p>}
+        {!formInputsValidity.idNumber && (
+          <p className={classes.redParagraph}>
+            Please enter a valid ID number!
+          </p>
+        )}
       </div>
       <div className={homePlaceControlClasses}>
         <label htmlFor="homePlace">Your Born Home Place</label>
         <input type="text" id="homePlace" ref={homePlaceInputRef} />
         {!formInputsValidity.homePlace && (
-          <p>Please enter a valid HomePlace!</p>
+          <p className={classes.redParagraph}>
+            Please enter a valid HomePlace!
+          </p>
         )}
       </div>
 
-      <div className={streetControlClasses}>
-        <label htmlFor="street">Title</label>
+      <div className={titleControlClasses}>
+        <label htmlFor="title">Title</label>
         <div className="custom-select">
-          <select id="street" ref={streetInputRef}>
+          <select id="title" ref={titleInputRef}>
             <option value="">Select Title</option>
             <option value="Dade">Dade</option>
             <option value="Mzalwane">Mzalwane</option>
@@ -201,14 +218,16 @@ const MemberForm = (props) => {
           </select>
           <div className="arrow"></div>
         </div>
-        {!formInputsValidity.street && (
-          <p>Please select a valid option for the street!</p>
+        {!formInputsValidity.title && (
+          <p className={classes.redParagraph}>
+            Please select a valid option for the title!
+          </p>
         )}
       </div>
-      <div className={postalCodeControlClasses}>
+      <div className={branchControlClasses}>
         <label htmlFor="postal">Branch</label>
         <div className="custom-select">
-          <select id="postal" ref={postalCodeInputRef}>
+          <select id="postal" ref={branchInputRef}>
             <option value="">Select Branch</option>
             <option value="Dunoon">Dunoon</option>
             <option value="Paarl">Paarl</option>
@@ -217,7 +236,9 @@ const MemberForm = (props) => {
           </select>
           <div className="arrow"></div>
         </div>
-        {!formInputsValidity.postalCode && <p>Please select a valid branch!</p>}
+        {!formInputsValidity.branch && (
+          <p className={classes.redParagraph}>Please select a valid branch!</p>
+        )}
       </div>
       <div className={sealedControlClasses}>
         <label htmlFor="sealed">Old Memeber</label>
@@ -229,7 +250,14 @@ const MemberForm = (props) => {
           </select>
           <div className="arrow"></div>
         </div>
-        {!formInputsValidity.sealed && <p>Old Memeber ?</p>}
+        {!formInputsValidity.sealed && (
+          <p className={classes.redParagraph}>Choose if Old member or not</p>
+        )}
+      </div>
+      <div className={imageControlClasses}>
+        {!formInputsValidity.image && (
+          <p className={classes.redParagraph}> Please Press upload button </p>
+        )}
       </div>
 
       <div className={classes.actions}>

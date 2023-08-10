@@ -8,6 +8,10 @@
   flex-direction: column;
   padding: 0.375rem 0.75rem;
 }
+/* ImageUpload.module.css */
+.redParagraph {
+  color: rgb(231, 235, 20);
+}
 
 .control {
   margin-bottom: 0.5rem;
@@ -78,7 +82,7 @@
 }
 
 .invalid label {
-  color: #ca3e51;
+  color: #ca3e3e;
 }
 
 .invalid input {
