@@ -1,6 +1,8 @@
 import { useState } from "react";
 import classes from "./ImageUpload.module.css";
+import { useGlobalContext } from "../../../store/context";
 const ImageUpload = (props) => {
+  const { setFlag } = useGlobalContext();
   const [IdPhoto, setIdPhoto] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +14,7 @@ const ImageUpload = (props) => {
     setIdPhoto(selectedPhoto);
     setImagePreview(URL.createObjectURL(selectedPhoto));
     setIshowUploadeBtn(true);
+    setFlag(true);
   };
 
   const uploadImage = async () => {

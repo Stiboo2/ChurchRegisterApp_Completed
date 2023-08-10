@@ -11,8 +11,10 @@ import {
   NEW_BRANCH_DATE,
   UPDATE_ATTENDANCE_RECORD,
   NOTIFICATION_DISPLAY,
+  WARNING,
   REPLACE_MEMBERS_DATA,
   SUBMITING,
+  FLAG,
   BRANCH_NAME,
   RELOAD_MEMBERS,
   ADD_MEMBER,
@@ -23,6 +25,9 @@ import {
 const reducer = (state, action) => {
   if (action.type === SUBMITING) {
     return { ...state, isSubmitting: action.payload.status };
+  }
+  if (action.type === FLAG) {
+    return { ...state, flag: action.payload.value };
   }
   if (action.type === WANT_TO_LOG_IN) {
     return { ...state, LogIn: action.payload.status };
@@ -297,6 +302,16 @@ const reducer = (state, action) => {
       notification: {
         status: action.payload.status,
         title: action.payload.title,
+        message: action.payload.message,
+      },
+    };
+  }
+  if (action.type === WARNING) {
+    return {
+      ...state,
+      warning: {
+        title: action.payload.title,
+        heading: action.payload.heading,
         message: action.payload.message,
       },
     };

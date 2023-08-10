@@ -13,8 +13,10 @@ import {
   NEW_BRANCH_DATE,
   UPDATE_ATTENDANCE_RECORD,
   NOTIFICATION_DISPLAY,
+  WARNING,
   REPLACE_MEMBERS_DATA,
   SUBMITING,
+  FLAG,
   BRANCH_NAME,
   RELOAD_MEMBERS,
   ADD_MEMBER,
@@ -27,10 +29,12 @@ const AppContext = createContext();
 const initialState = {
   logging: false,
   isSubmitting: false,
+  flag: false,
   cart: new Map(),
   branchs: new Map(capetownBranch.map((branch) => [branch._id, branch])),
   branch_Date: {},
   notification: null,
+  warning: null,
   LogIn: false,
 };
 
@@ -42,7 +46,6 @@ export const AppProvider = ({ children }) => {
   );
   console.log(state.cart);
   const login = state.logging;
-  //const { totalAmount, totalCost } = getTotals(state.branchs);
   const setCartAtReducer = (newCart) => {
     dispatch({ type: REPLACE_MEMBERS_DATA, payload: { newCart } });
   };
@@ -75,11 +78,12 @@ export const AppProvider = ({ children }) => {
   const setIsSubmitting = (status) => {
     dispatch({ type: SUBMITING, payload: { status } });
   };
+  const setFlag = (value) => {
+    dispatch({ type: FLAG, payload: { value } });
+  };
   const decrease = (id, attendanceRecord) => {
     dispatch({ type: DECREASE, payload: { id, attendanceRecord } });
   };
-
-  // Function to update attendance record
   const updateAttendanceRecord = (branch_Date) => {
     dispatch({ type: UPDATE_ATTENDANCE_RECORD, payload: { branch_Date } });
   };
@@ -89,11 +93,16 @@ export const AppProvider = ({ children }) => {
   const seach_branch_name = (churchID) => {
     dispatch({ type: BRANCH_NAME, payload: { churchID } });
   };
-
   const notifications = (status, title, message) => {
     dispatch({
       type: NOTIFICATION_DISPLAY,
       payload: { status, title, message },
+    });
+  };
+  const setWarning = (title, heading, message) => {
+    dispatch({
+      type: WARNING,
+      payload: { title, heading, message },
     });
   };
   const setWantToLogIn = (status) => {
@@ -122,8 +131,10 @@ export const AppProvider = ({ children }) => {
         insetData,
         login,
         notifications,
+        setWarning,
         setCartAtReducer,
         setIsSubmitting,
+        setFlag,
         seach_branch_name,
         reloadMembers,
         addNewMember,
