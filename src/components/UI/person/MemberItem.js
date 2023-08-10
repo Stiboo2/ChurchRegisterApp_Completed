@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import Delete from "./Delete";
 const MemberItem = (props) => {
   const [showDeleteSmg, setShowDeleteSmg] = useState(false);
-  const [deleteConfirmed, setDeleteConfirmed] = useState(false);
-
   const { deleteMember } = useGlobalContext();
 
   const deleteHanler = () => {
@@ -35,11 +33,11 @@ const MemberItem = (props) => {
             <div className={classes["discription"]}>
               <div>Cell: {props.cell}</div>
               <div>ID: {props.idNumber}</div>
-              <div className={classes.price}>Birthday: {props.Birthday}</div>
+              <div className={classes.price}>Birthday: {props.birthday}</div>
             </div>
             <div className={classes["discription"]}>
-              <div>Active: {props.Active ? "Yes" : "No"}</div>
-              <div>Sealed: {props.sealed ? "Yes" : "No"}</div>
+              <div>Active: {props.active}</div>
+              <div>Sealed: {props.sealed}</div>
               <div className={classes.price}>
                 Year/s of Service: {props.serviceYears}
               </div>

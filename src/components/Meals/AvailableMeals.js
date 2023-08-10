@@ -1,13 +1,11 @@
 import Card from "../UI/Card";
 import React from "react";
 import classes from "./AvailableMeals.module.css";
-import MealItem from "./MealItem/MealItem";
 import ExpensesList from "./MealItem/ExpensesList";
 import { useGlobalContext } from "../../store/context";
-import MemberForm from "./Data/MemberForm";
 
 const AvailableMeals = ({ attendanceRecord, catalog }) => {
-  const { cart, clearCart, totalCost, totalAmount, login } = useGlobalContext();
+  const { cart } = useGlobalContext();
   const cartArray = Array.from(cart.entries());
   if (cartArray.length === 0) {
     return (

@@ -18,13 +18,16 @@ const MemberList = ({ showNewMember, onDataReceived }) => {
   };
   useEffect(() => {
     sendDataToParent();
-  }, [showNewMember, cart, branchCounts]);
+  }, [showNewMember, cart]);
   return (
     <ul className={classes["expenses-list"]}>
       {members.map((memberCombo) => {
         const [id, member] = memberCombo;
 
-        if (!member.Active || (showNewMember && member.sealed)) {
+        if (
+          member.active === "no" ||
+          (showNewMember && member.sealed === "yes")
+        ) {
           return null; // Skip rendering the CartItem component
         }
         CountMembers++;
@@ -48,8 +51,8 @@ const MemberList = ({ showNewMember, onDataReceived }) => {
             cell={member.cell}
             idNumber={member.idNumber}
             serviceYears={member.serviceYears}
-            Birthday={member.Birthday}
-            Active={member.Active}
+            birthday={member.birthday}
+            active={member.active}
             sealed={member.sealed}
           />
         );

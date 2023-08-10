@@ -11,11 +11,11 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
   const [img, setImg] = useState(data.img);
   const [branch, setbranch] = useState(data.branch);
   const [amount, setAmount] = useState(data.amount);
-  const [Active, setActive] = useState(data.Active);
+  const [active, setActive] = useState(data.active);
   const [sealed, setSealed] = useState(data.sealed);
-  const [Birthday, setBirthday] = useState(data.Birthday);
+  const [birthday, setBirthday] = useState(data.birthday);
   const [serviceYears, setServiceYears] = useState(data.serviceYears);
-  const [HomePlace, setHomePlace] = useState(data.HomePlace);
+  const [homePlace, setHomePlace] = useState(data.homePlace);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,11 +29,11 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
       img,
       branch,
       amount,
-      Active,
+      active,
       sealed,
-      Birthday,
+      birthday,
       serviceYears,
-      HomePlace,
+      homePlace,
     };
     onUpdate(updatedData);
     navigate("/churchDataBase");
@@ -112,7 +112,7 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
           Active :
           <input
             type="text"
-            value={Active}
+            value={active}
             onChange={(e) => setActive(e.target.value)}
           />
         </label>
@@ -130,7 +130,7 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
           Birthday :
           <input
             type="text"
-            value={Birthday}
+            value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
           />
         </label>
@@ -148,7 +148,7 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
           HomePlace :
           <input
             type="text"
-            value={HomePlace}
+            value={homePlace}
             onChange={(e) => setHomePlace(e.target.value)}
           />
         </label>

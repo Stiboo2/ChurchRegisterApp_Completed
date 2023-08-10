@@ -19,7 +19,7 @@ const List = ({ memberS, selectedMonth }) => {
   const groupByMonth = (members) => {
     const groupedMembers = {};
     members.forEach((member) => {
-      const birthDate = new Date(member.Birthday);
+      const birthDate = new Date(member.birthday);
       const month = birthDate.toLocaleString("default", { month: "long" });
       if (!groupedMembers[month]) {
         groupedMembers[month] = [];
@@ -31,7 +31,7 @@ const List = ({ memberS, selectedMonth }) => {
 
   const filteredMembers = selectedMonth
     ? memberS.filter((member) => {
-        const birthDate = new Date(member.Birthday);
+        const birthDate = new Date(member.birthday);
         const month = birthDate.toLocaleString("default", { month: "long" });
         return month === selectedMonth;
       })
@@ -45,14 +45,14 @@ const List = ({ memberS, selectedMonth }) => {
         <div key={month}>
           <h3>{month}</h3>
           {groupedMembers[month].map((member) => {
-            const { id, surname, Birthday, img } = member;
-            const age = calculateAge(Birthday);
+            const { id, surname, birthday, img } = member;
+            const age = calculateAge(birthday);
             return (
               <article key={id} className="person">
                 <img src={img} alt={surname} />
                 <div>
                   <h4>{surname}</h4>
-                  <p>Date of Birth: {Birthday}</p>
+                  <p>Date of Birth: {birthday}</p>
                   <p>Age: {age} years</p>
                 </div>
               </article>

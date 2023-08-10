@@ -10,10 +10,10 @@ const BirthDay = () => {
 
   useEffect(() => {
     const fetchMembers = () => {
-      const memberS = Array.from(cart.entries()).map(([id, item]) => ({
-        id,
-        ...item,
-      }));
+      const memberS = Array.from(cart.entries())
+        .map(([id, item]) => ({ id, ...item }))
+        .filter((member) => member.active !== "no");
+
       setAllMemberS(memberS);
     };
 
@@ -53,7 +53,7 @@ const BirthDay = () => {
   ];
   const filteredMembers = selectedMonth
     ? allMemberS.filter((member) => {
-        const birthDate = new Date(member.Birthday);
+        const birthDate = new Date(member.birthday);
         const month = birthDate.toLocaleString("default", { month: "long" });
         return month === selectedMonth;
       })

@@ -60,7 +60,7 @@ const ImageUpload = (props) => {
             </div>
           </div>
           <div className="--form-control">
-            <p>
+            <div>
               <div>
                 <label>ID Photo:</label>
               </div>
@@ -71,8 +71,8 @@ const ImageUpload = (props) => {
                 name="image"
                 onChange={handleImageChange}
               />
-            </p>
-            <p>
+            </div>
+            <div>
               {isLoading
                 ? "Uploading..."
                 : showUploadeBtn && (
@@ -80,7 +80,7 @@ const ImageUpload = (props) => {
                       Upload Image
                     </button>
                   )}
-            </p>
+            </div>
           </div>
         </div>
       </div>

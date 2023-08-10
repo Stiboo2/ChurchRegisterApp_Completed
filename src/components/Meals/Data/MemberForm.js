@@ -222,7 +222,7 @@ const MemberForm = (props) => {
       <div className={sealedControlClasses}>
         <label htmlFor="sealed">Old Memeber</label>
         <div className="custom-select">
-          <select id="sealed" ref={postalCodeInputRef}>
+          <select id="sealed" ref={sealedInputRef}>
             <option value="">Yes/No</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>

@@ -211,7 +211,7 @@ const reducer = (state, action) => {
     const newItem = {
       ...item,
 
-      Active: false,
+      active: "no",
     };
     newCart.set(itemId, newItem);
     return { ...state, cart: newCart };
@@ -221,8 +221,6 @@ const reducer = (state, action) => {
     const newCart = new Map(state.cart);
     const itemId = action.payload.member.id;
     const item = newCart.get(itemId);
-    console.log("action.payload.member.id");
-    console.log(action.payload.member.id);
     const newItem = {
       ...item,
 
@@ -232,12 +230,12 @@ const reducer = (state, action) => {
       idNumber: action.payload.member.idNumber,
       img: action.payload.member.img,
       amount: action.payload.member.amount,
-      Active: action.payload.member.Active,
+      active: action.payload.member.active,
       branch: action.payload.member.branch,
       sealed: action.payload.member.sealed,
-      Birthday: action.payload.member.Birthday,
+      birthday: action.payload.member.birthday,
       serviceYears: action.payload.member.serviceYears,
-      HomePlace: action.payload.member.HomePlace,
+      homePlace: action.payload.member.homePlace,
       status: action.payload.member.status,
     };
     newCart.set(itemId, newItem);

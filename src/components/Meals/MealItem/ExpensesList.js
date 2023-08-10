@@ -15,7 +15,8 @@ const ExpensesList = ({ members, attendanceRecord, catalog }) => {
 
         if (
           (catalogString !== "all" && member.branch !== catalogString) ||
-          member.status !== "null"
+          member.status !== "null" ||
+          member.active === "no"
         ) {
           return null; // Skip rendering the CartItem component
         }

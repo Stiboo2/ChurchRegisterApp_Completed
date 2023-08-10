@@ -1,12 +1,8 @@
 import React, { Fragment, useState } from "react";
 import AvailableMeals from "./AvailableMeals";
-import MealsSummary from "./MealsSummary";
 import AttendanceSetup from "../Setup/AttendanceSetup";
-import InitSetUp from "../Setup/InitSetUp";
-import ExpensesList from "./MealItem/ExpensesList";
 import "./MealItem/Expenses.css";
 import FilterBar from "../Layout/FilterBar";
-import Card from "../UI/Card";
 import MemberForm from "./Data/MemberForm";
 import "./MealsButton.css";
 import { useGlobalContext } from "../../store/context";
@@ -49,6 +45,7 @@ const Meals = () => {
 
   const SaveMember = (newMember) => {
     addNewMember(newMember);
+    setIsSubmitting(true);
     MemberHandler();
   };
   const showCartHandler = () => {
