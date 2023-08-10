@@ -135,7 +135,6 @@ const MemberForm = (props) => {
   };
   const imageUploadHandler = (imageURL) => {
     setImageInputRef(imageURL);
-    console.log(imageURL);
   };
 
   return (

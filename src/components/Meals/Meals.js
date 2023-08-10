@@ -45,7 +45,6 @@ const Meals = () => {
 
   const SaveMember = (newMember) => {
     addNewMember(newMember);
-    setIsSubmitting(true);
     MemberHandler();
   };
   const showCartHandler = () => {

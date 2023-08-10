@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./UpdateMemberForm.module.css";
 import { useNavigate } from "react-router-dom";
-
+import ImageUpload from "../Meals/Data/ImageUpload";
 const UpdateMemberForm = ({ data, onUpdate }) => {
+  const [imageInput, setImageInput] = useState(data.img);
   const [title, setTitle] = useState(data.title);
   const [surname, setSurname] = useState(data.surname);
   const [cell, setCell] = useState(data.cell);
@@ -38,115 +39,143 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
     onUpdate(updatedData);
     navigate("/churchDataBase");
   };
-
+  const imageUploadHandler = (imageURL) => {
+    setImageInput(imageURL);
+    setImg(imageURL);
+  };
   return (
     <form className={classes.EditFormMaim} onSubmit={handleSubmit}>
       <div className={classes.EditForm}>
         <div className={classes.ImageContainer}>
-          <img src={img} alt="Your Image" className={classes.Image} />
+          <img src={imageInput} alt="Your Image" className={classes.Image} />
         </div>
-        <label>
-          Title :
+        <ImageUpload onImageUpload={imageUploadHandler} />
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Title : </label>
           <input
+            className={classes.TitleInputEdit}
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Surname :
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Surname : </label>
           <input
+            className={classes.SurnameInputEdit}
             type="text"
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Cell :
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Cell Number : </label>
           <input
+            className={classes.CellInputEdit}
             type="text"
             value={cell}
             onChange={(e) => setCell(e.target.value)}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          IdNumber :
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Id Number : </label>
           <input
+            className={classes.IdNumberInputEdit}
             type="nummber"
             value={idNumber}
             onChange={(e) => setTdNumber(e.target.value)}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Img :
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Image : </label>
+
           <input
+            className={classes.ImageInputEdit}
             type="text"
-            value={img}
+            value={imageInput}
             onChange={(e) => setImg(e.target.value)}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Branch :
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Branch : </label>
           <input
+            className={classes.BranchInputEdit}
             type="text"
             value={branch}
             onChange={(e) => setbranch(e.target.value)}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Amount :
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Amount : </label>
           <input
+            className={classes.AmountInputEdit}
             type="text"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
-        </label>
-        <br />
-        <label>
-          Active :
-          <input
-            type="text"
+        </div>
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Active : </label>
+          <select
+            className={classes.ActiveInputEdit}
             value={active}
             onChange={(e) => setActive(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Sealed :
-          <input
-            type="text"
-            value={sealed}
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Sealed : </label>
+          <select
+            className={classes.SeaInputEdit}
+            value={active}
             onChange={(e) => setSealed(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Birthday :
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div className={classes.lineUpText}>
+          <label className={classes.labelEdit}>Birthday : </label>
           <input
-            type="text"
+            className={classes.BirthdayInputEdit}
+            type="date"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
           />
-        </label>
-        <br />
-        <label>
-          ServiceYears :
+        </div>
+        <div className={classes.lineUpText}>
+          <label htmlFor="serviceYears">Number of years : </label>
+          <div className={classes["custom-select"]}>
+            <select
+              id="serviceYears"
+              value={serviceYears}
+              onChange={(e) => setServiceYears(e.target.value)}
+            >
+              <option value="" disabled>
+                Select a number of years
+              </option>
+              {[...Array(100).keys()].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+            <div className="arrow"></div>
+          </div>
+        </div>
+        <label className={classes.labelEdit}>
+          <label> HomePlace : </label>
           <input
-            type="text"
-            value={serviceYears}
-            onChange={(e) => setServiceYears(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          HomePlace :
-          <input
+            className={classes.HomePlacenputEdit}
             type="text"
             value={homePlace}
             onChange={(e) => setHomePlace(e.target.value)}
@@ -157,8 +186,10 @@ const UpdateMemberForm = ({ data, onUpdate }) => {
           <button className={classes.buttonUpdate} type="submit">
             Update
           </button>
-          <div className={classes.buttonBack}>
-            <Link to="../churchDataBase">Back to Church Database</Link>
+          <div>
+            <Link className={classes.buttonBack} to="../churchDataBase">
+              Cancel
+            </Link>
           </div>
         </div>
       </div>

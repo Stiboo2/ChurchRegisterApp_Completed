@@ -14,8 +14,6 @@ const UpdateMember = () => {
   const memberToFind = memberS.find((member) => member.id === memberIdToSearch); // Fixed the arrow function
 
   if (memberToFind) {
-    console.log("Found member:");
-    console.log(memberToFind);
   } else {
     console.log("Member not found!");
   }
