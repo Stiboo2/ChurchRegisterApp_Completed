@@ -32,7 +32,7 @@ const MemberList = ({ showNewMember, onDataReceived }) => {
         }
         CountMembers++;
 
-        if (!member.sealed) {
+        if (member.sealed === "no") {
           sealedFalseCount++;
         }
 

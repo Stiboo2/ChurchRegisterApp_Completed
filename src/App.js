@@ -56,12 +56,12 @@ function App(props) {
   }, []);
 
   //_______________loading____________________________
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
   const fetchCartData = async () => {
     try {
       console.log("inside fetchCartData function");
-      const response = await fetch(
-        "https://tac-capetown-default-rtdb.firebaseio.com/capetown.json"
-      );
+      const response = await fetch(`${apiBaseUrl}/capetown.json`);
 
       if (!response.ok) {
         throw new Error("Could not fetch cart data!");
@@ -99,13 +99,11 @@ function App(props) {
         ...item,
       }));
       notifications("pending", "Sending...", "Sending cart data!");
-      const response = await fetch(
-        "https://tac-capetown-default-rtdb.firebaseio.com/capetown.json",
-        {
-          method: "PUT",
-          body: JSON.stringify(memberS),
-        }
-      );
+      const apiEndpoint = process.env.REACT_APP_API_BASE_URL;
+      const response = await fetch(`${apiEndpoint}/capetown.json`, {
+        method: "PUT",
+        body: JSON.stringify(memberS),
+      });
       if (!response.ok) {
         throw new Error("Sending cart data failed.");
       }

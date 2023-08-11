@@ -49,7 +49,7 @@ const MemberForm = (props) => {
     const enteredbirthdayIsValid = !isEmpty(enteredbirthday);
     const enteredtitleIsValid = !isEmpty(enteredtitle);
     const enteredbranchIsValid = !isEmpty(enteredbranch);
-    const enteredsealedIsValid = true; // Always valid, regardless of input
+    const enteredsealedIsValid = !isEmpty(enteredbranch);
     const enteredCellIsValid = isTenChars(enteredCell);
     const enteredIdNumberIsValid = true; // Always valid, regardless of input
     const enteredHomePlaceIsValid = true; // Always valid, regardless of input
@@ -61,7 +61,7 @@ const MemberForm = (props) => {
       birthday: enteredbirthdayIsValid,
       title: enteredtitleIsValid,
       branch: enteredbranchIsValid,
-      sealed: enteredbranchIsValid,
+      sealed: enteredsealedIsValid,
       cell: enteredCellIsValid,
       serviceYears: enteredserviceYearsIsValid,
       idNumber: enteredIdNumberIsValid,
@@ -90,7 +90,7 @@ const MemberForm = (props) => {
       birthday: enteredName,
       title: enteredtitle,
       branch: enteredbranch,
-      branch: enteredsealed,
+      sealed: enteredsealed,
       cell: enteredCell,
       serviceYears: enteredserviceYears,
       idNumber: enteredIdNumber,

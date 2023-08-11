@@ -7,7 +7,8 @@ const ImageUpload = (props) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showUploadeBtn, setIshowUploadeBtn] = useState(false);
-  const upload_preset = "qgj5qdsw";
+  const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
+  const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
 
   const handleImageChange = (e) => {
     const selectedPhoto = e.target.files[0];
@@ -28,12 +29,11 @@ const ImageUpload = (props) => {
       ) {
         const imageFormData = new FormData();
         imageFormData.append("file", IdPhoto);
-        imageFormData.append("cloud_name", "dkayrcyeb");
-        imageFormData.append("upload_preset", "qgj5qdsw");
-        console.log("fetch");
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/dkayrcyeb/image/upload",
+        imageFormData.append("cloud_name", cloudName);
+        imageFormData.append("upload_preset", uploadPreset);
 
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
           {
             method: "post",
             body: imageFormData,
