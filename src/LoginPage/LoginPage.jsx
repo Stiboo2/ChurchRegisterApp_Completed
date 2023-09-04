@@ -22,8 +22,8 @@ function LoginPage() {
   const TwitterBackground =
     "linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)";
 
-  const [loginWithText, setLoginWithText] = useState("OR LOGIN WITH");
-  const [buttonText, setButtonText] = useState("Sign Up");
+  const [loginWithText, setLoginWithText] = useState("REGISTER");
+  const [buttonText, setButtonText] = useState("LOGIN");
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -40,6 +40,15 @@ function LoginPage() {
       }
     }
   };
+  const LoadUserEmail = (event) => {
+    if (buttonText === "Sign Up") {
+      setRegisterPassword(event.target.value);
+    } else if (buttonText === "LOGIN") {
+      setLoginPassword(event.target.value);
+    }
+    }
+
+
 
   const checkIfEmpty = () => {
     console.log("checkIfEmpty");
@@ -81,6 +90,7 @@ function LoginPage() {
   };
 
   const login = async () => {
+
     checkIfEmpty();
     try {
       const user = await signInWithEmailAndPassword(
@@ -109,6 +119,8 @@ function LoginPage() {
     console.log("consthandleCloseLogIn");
     setWantToLogIn(false);
   };
+
+  
   return (
     <MainContainer>
       <div className={classes.closeLogIn} onClick={handleCloseLogIn}>
@@ -119,18 +131,16 @@ function LoginPage() {
         <Input
           type="text"
           placeholder="Email"
+          onChange={(event) => LoadUserPassword(event)}
           onBlur={(event) => LoadUserPassword(event)}
+          onInput={(event) => LoadUserPassword(event)}
         />
         <Input
           type="password"
           placeholder="Password"
-          onBlur={(event) => {
-            if (buttonText === "Sign Up") {
-              setRegisterPassword(event.target.value);
-            } else if (buttonText === "LOGIN") {
-              setLoginPassword(event.target.value);
-            }
-          }}
+          onChange={(event) => LoadUserEmail(event)}
+          onBlur={(event) => LoadUserEmail(event)}
+          onInput={(event) => LoadUserEmail(event)}
         />
       </InputContainer>
       <ButtonContainer>
