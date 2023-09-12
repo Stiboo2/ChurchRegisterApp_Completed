@@ -1,6 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import classes from "./Root.module.css";
 import MainNavigation from "./MainNavigation";
+import Footer from "./Footer/Footer";
+
 
 const RootLayout = () => {
   const location = useLocation();
@@ -14,6 +16,7 @@ const RootLayout = () => {
       <main className={classes.content}>
         <Outlet />
       </main>
+      {<Footer />}
     </>
   );
 };
